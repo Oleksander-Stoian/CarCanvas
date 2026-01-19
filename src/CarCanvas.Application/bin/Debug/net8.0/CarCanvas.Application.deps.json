@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CarCanvas.Application/1.0.0": {
+        "dependencies": {
+          "CarCanvas.Domain": "1.0.0"
+        },
+        "runtime": {
+          "CarCanvas.Application.dll": {}
+        }
+      },
+      "CarCanvas.Domain/1.0.0": {
+        "runtime": {
+          "CarCanvas.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CarCanvas.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CarCanvas.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

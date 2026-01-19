@@ -1,0 +1,64 @@
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+        <strong>Lines Control</strong>
+    </div>
+    <div class="card-body">
+        <h6>Add Manual Line</h6>
+        <div class="row g-2 mb-2">
+            <div class="col-3">
+                <input type="number" class="form-control form-control-sm" placeholder="X1" @bind="StartX" />
+            </div>
+            <div class="col-3">
+                <input type="number" class="form-control form-control-sm" placeholder="Y1" @bind="StartY" />
+            </div>
+            <div class="col-3">
+                <input type="number" class="form-control form-control-sm" placeholder="X2" @bind="EndX" />
+            </div>
+            <div class="col-3">
+                <input type="number" class="form-control form-control-sm" placeholder="Y2" @bind="EndY" />
+            </div>
+        </div>
+        <button class="btn btn-sm btn-outline-success w-100 mb-3" @onclick="AddLine">Add Line</button>
+
+        <h6>Generate Random</h6>
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="N" @bind="GenerateCount" />
+            <button class="btn btn-outline-primary" @onclick="Generate">Generate</button>
+        </div>
+
+        <button class="btn btn-danger w-100" @onclick="Clear">Clear All Lines</button>
+        
+        <div class="mt-2 text-muted">
+            <small>Total Lines: @TotalLines</small>
+        </div>
+    </div>
+</div>
+
+@code {
+    public int StartX { get; set; }
+    public int StartY { get; set; }
+    public int EndX { get; set; }
+    public int EndY { get; set; }
+    
+    public int GenerateCount { get; set; } = 100;
+
+    [Parameter] public int TotalLines { get; set; }
+    [Parameter] public EventCallback<(int x1, int y1, int x2, int y2)> OnAddLine { get; set; }
+    [Parameter] public EventCallback<int> OnGenerate { get; set; }
+    [Parameter] public EventCallback OnClear { get; set; }
+
+    private async Task AddLine()
+    {
+        await OnAddLine.InvokeAsync((StartX, StartY, EndX, EndY));
+    }
+
+    private async Task Generate()
+    {
+        await OnGenerate.InvokeAsync(GenerateCount);
+    }
+
+    private async Task Clear()
+    {
+        await OnClear.InvokeAsync();
+    }
+}

@@ -1,0 +1,99 @@
+@using CarCanvas.Domain.Entities
+@using CarCanvas.Web.ViewModels
+
+<div class="card mb-3">
+    <div class="card-header bg-light">
+        <strong>@Title</strong>
+    </div>
+    <div class="card-body">
+        @if (Car != null)
+        {
+            <div class="row g-2 align-items-center mb-2">
+                <div class="col-auto">
+                    <label class="col-form-label">Translate X:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="number" class="form-control" value="@Car.Transform.TranslateX" 
+                           @onchange="@(e => OnTransformChanged("x", e.Value))" />
+                </div>
+                <div class="col-auto">
+                    <label class="col-form-label">Y:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="number" class="form-control" value="@Car.Transform.TranslateY" 
+                           @onchange="@(e => OnTransformChanged("y", e.Value))" />
+                </div>
+            </div>
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">Rotation (°):</label>
+                </div>
+                <div class="col-auto">
+                    <input type="number" class="form-control" value="@Car.Transform.RotationAngle" 
+                           @onchange="@(e => OnTransformChanged("rot", e.Value))" />
+                </div>
+            </div>
+            
+            <button class="btn btn-primary w-100 mb-2" @onclick="OnShowIntersections" disabled="@IsBusy">
+                @if (IsBusy)
+                {
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span> Computing...</span>
+                }
+                else
+                {
+                    <span>Show Intersections</span>
+                }
+            </button>
+
+            @if (Result != null)
+            {
+                <div class="alert alert-info mt-2 p-2">
+                    <small>
+                        <div>Time: <strong>@Result.TimeElapsedMs ms</strong></div>
+                        <div>Lines hits: @Result.TotalHitsLines</div>
+                        <div>Cars hits: @Result.TotalHitsCars</div>
+                        <div>Total: @Result.TotalIntersections</div>
+                    </small>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Car not loaded.</p>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; } = "Car";
+    [Parameter] public CarModel? Car { get; set; }
+    [Parameter] public CarCanvas.Application.DTOs.IntersectionResult? Result { get; set; }
+    [Parameter] public bool IsBusy { get; set; }
+    [Parameter] public EventCallback<(int x, int y, double rot)> OnTransformChange { get; set; }
+    [Parameter] public EventCallback OnFindIntersections { get; set; }
+
+    private async Task OnTransformChanged(string type, object? value)
+    {
+        if (Car == null || value == null) return;
+        
+        int x = Car.Transform.TranslateX;
+        int y = Car.Transform.TranslateY;
+        double rot = Car.Transform.RotationAngle;
+
+        if (double.TryParse(value.ToString(), out double dVal))
+        {
+            int iVal = (int)dVal;
+            if (type == "x") x = iVal;
+            else if (type == "y") y = iVal;
+            else if (type == "rot") rot = dVal;
+            
+            await OnTransformChange.InvokeAsync((x, y, rot));
+        }
+    }
+
+    private async Task OnShowIntersections()
+    {
+        await OnFindIntersections.InvokeAsync();
+    }
+}

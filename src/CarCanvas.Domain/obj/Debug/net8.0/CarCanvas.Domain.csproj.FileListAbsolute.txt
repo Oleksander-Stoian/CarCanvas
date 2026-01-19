@@ -1,0 +1,11 @@
+D:\Programing\logistics\src\CarCanvas.Domain\bin\Debug\net8.0\CarCanvas.Domain.deps.json
+D:\Programing\logistics\src\CarCanvas.Domain\bin\Debug\net8.0\CarCanvas.Domain.dll
+D:\Programing\logistics\src\CarCanvas.Domain\bin\Debug\net8.0\CarCanvas.Domain.pdb
+D:\Programing\logistics\src\CarCanvas.Domain\obj\Debug\net8.0\CarCanvas.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programing\logistics\src\CarCanvas.Domain\obj\Debug\net8.0\CarCanvas.Domain.AssemblyInfoInputs.cache
+D:\Programing\logistics\src\CarCanvas.Domain\obj\Debug\net8.0\CarCanvas.Domain.AssemblyInfo.cs
+D:\Programing\logistics\src\CarCanvas.Domain\obj\Debug\net8.0\CarCanvas.Domain.csproj.CoreCompileInputs.cache
+D:\Programing\logistics\src\CarCanvas.Domain\obj\Debug\net8.0\CarCanvas.Domain.dll
+D:\Programing\logistics\src\CarCanvas.Domain\obj\Debug\net8.0\refint\CarCanvas.Domain.dll
+D:\Programing\logistics\src\CarCanvas.Domain\obj\Debug\net8.0\CarCanvas.Domain.pdb
+D:\Programing\logistics\src\CarCanvas.Domain\obj\Debug\net8.0\ref\CarCanvas.Domain.dll

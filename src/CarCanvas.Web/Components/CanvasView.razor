@@ -1,0 +1,17 @@
+@inject CarCanvas.Application.Interfaces.ICanvasSceneService CanvasService
+
+<canvas id="@Id" width="@Width" height="@Height" style="border: 1px solid #ccc; background-color: #f8f9fa;"></canvas>
+
+@code {
+    [Parameter] public string Id { get; set; } = "mainCanvas";
+    [Parameter] public int Width { get; set; } = 2000;
+    [Parameter] public int Height { get; set; } = 400;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await CanvasService.InitializeAsync(Id);
+        }
+    }
+}

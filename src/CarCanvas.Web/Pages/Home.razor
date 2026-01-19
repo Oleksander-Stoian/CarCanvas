@@ -1,0 +1,58 @@
+@page "/"
+@using CarCanvas.Web.Components
+@using CarCanvas.Web.ViewModels
+@inject DashboardViewModel ViewModel
+@implements IDisposable
+
+<PageTitle>CarCanvas Intersections</PageTitle>
+
+<div class="container-fluid p-3">
+    <div class="row mb-3">
+        <div class="col-12" style="overflow-x: auto;">
+            <CanvasView Id="mainCanvas" Width="2000" Height="400" />
+        </div>
+    </div>
+
+    @if (ViewModel.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
+    }
+
+    <div class="row">
+        <div class="col-md-4">
+            <CarControlPanel Title="Car #1 (Blue)" 
+                             Car="ViewModel.Car1" 
+                             Result="ViewModel.ResultCar1"
+                             IsBusy="ViewModel.IsLoading"
+                             OnTransformChange="@(t => ViewModel.UpdateTransformAsync(1, t.x, t.y, t.rot))"
+                             OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(1))" />
+        </div>
+        <div class="col-md-4">
+            <CarControlPanel Title="Car #2 (Green)" 
+                             Car="ViewModel.Car2" 
+                             Result="ViewModel.ResultCar2"
+                             IsBusy="ViewModel.IsLoading"
+                             OnTransformChange="@(t => ViewModel.UpdateTransformAsync(2, t.x, t.y, t.rot))"
+                             OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(2))" />
+        </div>
+        <div class="col-md-4">
+            <LineControlPanel TotalLines="ViewModel.Lines.Count"
+                              OnAddLine="@(l => ViewModel.AddLineAsync(l.x1, l.y1, l.x2, l.y2))"
+                              OnGenerate="@(n => ViewModel.GenerateRandomLinesAsync(n))"
+                              OnClear="@(() => ViewModel.ClearLinesAsync())" />
+        </div>
+    </div>
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        ViewModel.OnChange += StateHasChanged;
+        await ViewModel.InitializeAsync();
+    }
+
+    public void Dispose()
+    {
+        ViewModel.OnChange -= StateHasChanged;
+    }
+}
