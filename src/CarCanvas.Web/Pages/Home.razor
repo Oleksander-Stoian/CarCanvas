@@ -4,74 +4,100 @@
 @inject DashboardViewModel ViewModel
 @implements IDisposable
 
-<PageTitle>CarCanvas Intersections</PageTitle>
+<PageTitle>CarCanvas - Dashboard</PageTitle>
 
-<div class="container-fluid p-3">
-    <div class="row mb-3">
-        <div class="col-12" style="overflow-x: auto;">
-            <CanvasView Id="mainCanvas" Width="2000" Height="400" />
-        </div>
+<!-- Left/Top: Canvas Area -->
+<div class="canvas-area">
+    <div style="overflow: auto; max-width: 100%; max-height: 100%; box-shadow: var(--shadow-md); border-radius: var(--radius-md);">
+        <CanvasView Id="mainCanvas" Width="2000" Height="800" />
     </div>
-
-    <!-- File Upload Section -->
-    <div class="card mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Car Data Source</h5>
-            <div class="d-flex flex-wrap align-items-center gap-3">
-                <div class="d-flex align-items-center gap-2">
-                     <label class="form-label mb-0 fw-bold">Upload car file (.txt):</label>
-                     <InputFile OnChange="LoadFile" class="form-control form-control-sm" style="width: auto;" accept=".txt" />
-                </div>
-                
-                <div class="vr"></div>
-                
-                <button class="btn btn-outline-secondary btn-sm" @onclick="LoadSample" disabled="@ViewModel.IsLoading">
-                    Load sample (Logan.txt)
-                </button>
-
-                @if (ViewModel.LoadedPointsCount.HasValue)
-                {
-                    <div class="ms-auto text-muted small">
-                        <strong>Source:</strong> @ViewModel.LoadedSourceName | 
-                        <strong>Loaded points:</strong> @ViewModel.LoadedPointsCount
-                    </div>
-                }
+    
+    @if (ViewModel.IsLoading)
+    {
+        <div class="loading-overlay">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
             </div>
         </div>
+    }
+</div>
+
+<!-- Right/Bottom: Controls Sidebar -->
+<div class="controls-sidebar">
+    <!-- Tabs Navigation -->
+    <div class="tabs-nav">
+        <div class="tab-link @(activeTab == "cars" ? "active" : "")" @onclick="@(() => activeTab = "cars")">Cars</div>
+        <div class="tab-link @(activeTab == "lines" ? "active" : "")" @onclick="@(() => activeTab = "lines")">Lines</div>
+        <div class="tab-link @(activeTab == "data" ? "active" : "")" @onclick="@(() => activeTab = "data")">Data</div>
     </div>
 
-    @if (ViewModel.ErrorMessage != null)
-    {
-        <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
-    }
+    <div class="sidebar-content">
+        @if (activeTab == "cars")
+        {
+            <div class="d-flex flex-column gap-3">
+                <CarControlPanel Title="Car #1 (Blue)" 
+                                 Car="ViewModel.Car1" 
+                                 Result="ViewModel.ResultCar1"
+                                 IsBusy="ViewModel.IsLoading"
+                                 OnTransformChange="@(t => ViewModel.UpdateTransformAsync(1, t.x, t.y, t.rot))"
+                                 OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(1))" />
 
-    <div class="row">
-        <div class="col-md-4">
-            <CarControlPanel Title="Car #1 (Blue)" 
-                             Car="ViewModel.Car1" 
-                             Result="ViewModel.ResultCar1"
-                             IsBusy="ViewModel.IsLoading"
-                             OnTransformChange="@(t => ViewModel.UpdateTransformAsync(1, t.x, t.y, t.rot))"
-                             OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(1))" />
-        </div>
-        <div class="col-md-4">
-            <CarControlPanel Title="Car #2 (Green)" 
-                             Car="ViewModel.Car2" 
-                             Result="ViewModel.ResultCar2"
-                             IsBusy="ViewModel.IsLoading"
-                             OnTransformChange="@(t => ViewModel.UpdateTransformAsync(2, t.x, t.y, t.rot))"
-                             OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(2))" />
-        </div>
-        <div class="col-md-4">
+                <CarControlPanel Title="Car #2 (Green)" 
+                                 Car="ViewModel.Car2" 
+                                 Result="ViewModel.ResultCar2"
+                                 IsBusy="ViewModel.IsLoading"
+                                 OnTransformChange="@(t => ViewModel.UpdateTransformAsync(2, t.x, t.y, t.rot))"
+                                 OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(2))" />
+            </div>
+        }
+        else if (activeTab == "lines")
+        {
             <LineControlPanel TotalLines="ViewModel.Lines.Count"
                               OnAddLine="@(l => ViewModel.AddLineAsync(l.x1, l.y1, l.x2, l.y2))"
                               OnGenerate="@(n => ViewModel.GenerateRandomLinesAsync(n))"
                               OnClear="@(() => ViewModel.ClearLinesAsync())" />
-        </div>
+        }
+        else if (activeTab == "data")
+        {
+             <div class="card-modern">
+                <div class="card-header-modern">Data Source</div>
+                <div class="d-flex flex-column gap-3">
+                    <div>
+                        <label class="form-label mb-1 text-muted small">Upload File (.txt)</label>
+                        <InputFile OnChange="LoadFile" class="form-control" accept=".txt" />
+                    </div>
+                    
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="flex-grow-1 border-top" style="border-color: var(--border-color) !important;"></div>
+                        <span class="text-muted small">OR</span>
+                        <div class="flex-grow-1 border-top" style="border-color: var(--border-color) !important;"></div>
+                    </div>
+
+                    <button class="btn-secondary-modern w-full" @onclick="LoadSample" disabled="@ViewModel.IsLoading">
+                        Load Sample (Logan.txt)
+                    </button>
+
+                    @if (ViewModel.LoadedPointsCount.HasValue)
+                    {
+                        <div class="alert alert-info py-2 px-3 mb-0 mt-2 small">
+                            <div><strong>Source:</strong> @ViewModel.LoadedSourceName</div>
+                            <div><strong>Points:</strong> @ViewModel.LoadedPointsCount</div>
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            @if (ViewModel.ErrorMessage != null)
+            {
+                <div class="alert alert-danger mt-3">@ViewModel.ErrorMessage</div>
+            }
+        }
     </div>
 </div>
 
 @code {
+    private string activeTab = "cars";
+
     protected override async Task OnInitializedAsync()
     {
         ViewModel.OnChange += StateHasChanged;
@@ -87,8 +113,6 @@
     {
         var file = e.File;
         if (file == null) return;
-
-        // Limit size (e.g. 2 MB)
         long maxFileSize = 1024 * 1024 * 2; 
 
         try
