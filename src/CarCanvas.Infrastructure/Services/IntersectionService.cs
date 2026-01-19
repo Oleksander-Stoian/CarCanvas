@@ -14,9 +14,9 @@ namespace CarCanvas.Infrastructure.Services;
 
 public class IntersectionService : IIntersectionService
 {
-    // Cache: CarId -> (TransformHash, PixelSet)
+    // Cache: CarId -> (TransformHash, PixelSet, Aabb)
     // We need a way to compare Transforms efficiently.
-    private readonly Dictionary<int, (int TransformHash, HashSet<int> PixelSet)> _pixelSetCache = new();
+    private readonly Dictionary<int, (int TransformHash, HashSet<int> PixelSet, Aabb Box)> _pixelSetCache = new();
     
     public async Task<IntersectionResult> FindIntersectionsAsync(
         CarModel targetCar, 
@@ -38,8 +38,8 @@ public class IntersectionService : IIntersectionService
         var result = new IntersectionResult();
         
         // 1. Get PixelSets
-        var targetPixels = GetOrUpdatePixelSet(targetCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
-        var otherPixels = GetOrUpdatePixelSet(otherCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
+        var (targetPixels, targetBox) = GetOrUpdatePixelSet(targetCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
+        var (otherPixels, _) = GetOrUpdatePixelSet(otherCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
 
         // 2. Intersections with Other Car (PixelSet Intersection)
         // We only care if target intersects other.
@@ -66,6 +66,13 @@ public class IntersectionService : IIntersectionService
         int lineHits = 0;
         foreach (var line in lines)
         {
+            // Fast-check: AABB intersection
+            // Add padding (e.g., 2px) to avoid false negatives due to rounding/Bresenham variance
+            if (!GeometryUtils.SegmentIntersectsAabb(line, targetBox, padding: 2))
+            {
+                continue;
+            }
+
             foreach (var p in Bresenham.GetPointsOnLine(line.Start, line.End))
             {
                 // Check bounds (optional, but good for safety)
@@ -91,7 +98,7 @@ public class IntersectionService : IIntersectionService
         return result;
     }
 
-    private HashSet<int> GetOrUpdatePixelSet(CarModel car, int stride, int width, int height)
+    private (HashSet<int> PixelSet, Aabb Box) GetOrUpdatePixelSet(CarModel car, int stride, int width, int height)
     {
         int currentHash = ComputeTransformHash(car.Transform);
 
@@ -99,7 +106,7 @@ public class IntersectionService : IIntersectionService
         {
             if (cached.TransformHash == currentHash)
             {
-                return cached.PixelSet;
+                return (cached.PixelSet, cached.Box);
             }
         }
 
@@ -107,8 +114,19 @@ public class IntersectionService : IIntersectionService
         var pixels = new HashSet<int>();
         var transformedPoints = PointTransformer.TransformPoints(car.OriginalPoints, car.Center, car.Transform);
         
+        int minX = int.MaxValue;
+        int maxX = int.MinValue;
+        int minY = int.MaxValue;
+        int maxY = int.MinValue;
+
         foreach (var p in transformedPoints)
         {
+            // Update AABB
+            if (p.X < minX) minX = p.X;
+            if (p.X > maxX) maxX = p.X;
+            if (p.Y < minY) minY = p.Y;
+            if (p.Y > maxY) maxY = p.Y;
+
             // Filter out of bounds points if necessary, or just allow them but they won't match anything on canvas [0..W, 0..H]
             // We should filter to keep HashSet clean and matching valid canvas keys
             if (p.X >= 0 && p.X < width && p.Y >= 0 && p.Y < height)
@@ -117,8 +135,15 @@ public class IntersectionService : IIntersectionService
             }
         }
 
-        _pixelSetCache[car.Id] = (currentHash, pixels);
-        return pixels;
+        // Handle case if no points (e.g. empty car)
+        if (minX > maxX)
+        {
+            minX = maxX = minY = maxY = 0;
+        }
+
+        var box = new Aabb(minX, maxX, minY, maxY);
+        _pixelSetCache[car.Id] = (currentHash, pixels, box);
+        return (pixels, box);
     }
 
     private int ComputeTransformHash(Transform t)
