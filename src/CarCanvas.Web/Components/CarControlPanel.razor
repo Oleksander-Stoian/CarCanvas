@@ -54,6 +54,15 @@
                         <div>Lines hits: @Result.TotalHitsLines</div>
                         <div>Cars hits: @Result.TotalHitsCars</div>
                         <div>Total: @Result.TotalIntersections</div>
+                        @if (ShowDebugStats)
+                        {
+                            <hr class="my-1"/>
+                            <div class="text-muted" style="font-size: 0.8em;">
+                                <div>Rejected (Line AABB): @Result.RejectedByLineAabb</div>
+                                <div>Rejected (Seg AABB): @Result.RejectedBySegmentAabb</div>
+                                <div>Bresenham Calls: @Result.ProcessedByBresenham</div>
+                            </div>
+                        }
                     </small>
                 </div>
             }
@@ -70,6 +79,7 @@
     [Parameter] public CarModel? Car { get; set; }
     [Parameter] public CarCanvas.Application.DTOs.IntersectionResult? Result { get; set; }
     [Parameter] public bool IsBusy { get; set; }
+    [Parameter] public bool ShowDebugStats { get; set; }
     [Parameter] public EventCallback<(int x, int y, double rot)> OnTransformChange { get; set; }
     [Parameter] public EventCallback OnFindIntersections { get; set; }
 

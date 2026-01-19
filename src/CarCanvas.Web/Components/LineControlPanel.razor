@@ -31,6 +31,12 @@
         <div class="mt-2 text-muted">
             <small>Total Lines: @TotalLines</small>
         </div>
+        
+        <hr/>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="debugSwitch" checked="@ShowDebug" @onchange="OnDebugToggle">
+            <label class="form-check-label" for="debugSwitch">Show Debug Boxes</label>
+        </div>
     </div>
 </div>
 
@@ -43,9 +49,11 @@
     public int GenerateCount { get; set; } = 100;
 
     [Parameter] public int TotalLines { get; set; }
+    [Parameter] public bool ShowDebug { get; set; }
     [Parameter] public EventCallback<(int x1, int y1, int x2, int y2)> OnAddLine { get; set; }
     [Parameter] public EventCallback<int> OnGenerate { get; set; }
     [Parameter] public EventCallback OnClear { get; set; }
+    [Parameter] public EventCallback<bool> OnDebugChange { get; set; }
 
     private async Task AddLine()
     {
@@ -60,5 +68,13 @@
     private async Task Clear()
     {
         await OnClear.InvokeAsync();
+    }
+
+    private async Task OnDebugToggle(ChangeEventArgs e)
+    {
+        if (e.Value is bool val)
+        {
+            await OnDebugChange.InvokeAsync(val);
+        }
     }
 }

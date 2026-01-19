@@ -39,7 +39,11 @@ public class IntersectionService : IIntersectionService
         
         // 1. Get PixelSets
         var (targetPixels, targetBox) = GetOrUpdatePixelSet(targetCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
-        var (otherPixels, _) = GetOrUpdatePixelSet(otherCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
+        var (otherPixels, otherBox) = GetOrUpdatePixelSet(otherCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
+        
+        // Save AABBs to result for debug
+        result.TargetCarAabb = targetBox;
+        result.OtherCarAabb = otherBox;
 
         // 2. Intersections with Other Car (PixelSet Intersection)
         // We only care if target intersects other.
@@ -64,15 +68,39 @@ public class IntersectionService : IIntersectionService
         // 3. Intersections with Lines
         // For each line, bresenham -> check if point in targetPixels
         int lineHits = 0;
+        
+        // Padded AABB for fast check (safe against rounding errors)
+        var targetBoxPadded = targetBox.Inflate(2, options.CanvasWidth, options.CanvasHeight);
+
         foreach (var line in lines)
         {
-            // Fast-check: AABB intersection
-            // Add padding (e.g., 2px) to avoid false negatives due to rounding/Bresenham variance
-            if (!GeometryUtils.SegmentIntersectsAabb(line, targetBox, padding: 2))
+            // Super-fast check: AABB vs AABB
+            // Construct line AABB inline (O(1)) with 1px padding
+            int lxMin, lxMax, lyMin, lyMax;
+            if (line.Start.X < line.End.X) { lxMin = line.Start.X - 1; lxMax = line.End.X + 1; }
+            else { lxMin = line.End.X - 1; lxMax = line.Start.X + 1; }
+            
+            if (line.Start.Y < line.End.Y) { lyMin = line.Start.Y - 1; lyMax = line.End.Y + 1; }
+            else { lyMin = line.End.Y - 1; lyMax = line.Start.Y + 1; }
+
+            var lineAabb = new Aabb(lxMin, lxMax, lyMin, lyMax);
+
+            // Check intersection
+            if (!targetBoxPadded.Intersects(lineAabb))
             {
+                result.RejectedByLineAabb++;
                 continue;
             }
 
+            // Fast-check: Segment vs AABB intersection (Cohen-Sutherland)
+            // Still useful because a diagonal line might cross the box's AABB but not the box itself
+            if (!GeometryUtils.SegmentIntersectsAabb(line, targetBox, padding: 2))
+            {
+                result.RejectedBySegmentAabb++;
+                continue;
+            }
+
+            result.ProcessedByBresenham++;
             foreach (var p in Bresenham.GetPointsOnLine(line.Start, line.End))
             {
                 // Check bounds (optional, but good for safety)

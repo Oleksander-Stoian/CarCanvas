@@ -189,7 +189,7 @@
         }
       },
       {
-        "HashCode": 1696637206,
+        "HashCode": 1884542085,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.CarControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -238,6 +238,15 @@
           },
           {
             "Kind": "Components.Component",
+            "Name": "ShowDebugStats",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "ShowDebugStats",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
             "Name": "OnTransformChange",
             "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
             "Metadata": {
@@ -265,7 +274,7 @@
         }
       },
       {
-        "HashCode": 754874182,
+        "HashCode": 264818882,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.CarControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -309,6 +318,15 @@
             "TypeName": "System.Boolean",
             "Metadata": {
               "Common.PropertyName": "IsBusy",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "ShowDebugStats",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "ShowDebugStats",
               "Common.GloballyQualifiedTypeName": "global::System.Boolean"
             }
           },
@@ -437,7 +455,7 @@
         }
       },
       {
-        "HashCode": 371940900,
+        "HashCode": -1836207986,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.LineControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -459,6 +477,15 @@
           },
           {
             "Kind": "Components.Component",
+            "Name": "ShowDebug",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "ShowDebug",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
             "Name": "OnAddLine",
             "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x1, System.Int32 y1, System.Int32 x2, System.Int32 y2)>",
             "Metadata": {
@@ -486,6 +513,16 @@
               "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback",
               "Components.EventCallback": "True"
             }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnDebugChange",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean>",
+            "Metadata": {
+              "Common.PropertyName": "OnDebugChange",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<global::System.Boolean>",
+              "Components.EventCallback": "True"
+            }
           }
         ],
         "Metadata": {
@@ -496,7 +533,7 @@
         }
       },
       {
-        "HashCode": -773370329,
+        "HashCode": -1667641735,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.LineControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -518,6 +555,15 @@
           },
           {
             "Kind": "Components.Component",
+            "Name": "ShowDebug",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "ShowDebug",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
             "Name": "OnAddLine",
             "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x1, System.Int32 y1, System.Int32 x2, System.Int32 y2)>",
             "Metadata": {
@@ -543,6 +589,16 @@
             "Metadata": {
               "Common.PropertyName": "OnClear",
               "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback",
+              "Components.EventCallback": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnDebugChange",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean>",
+            "Metadata": {
+              "Common.PropertyName": "OnDebugChange",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<global::System.Boolean>",
               "Components.EventCallback": "True"
             }
           }

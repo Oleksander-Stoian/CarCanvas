@@ -39,6 +39,7 @@
                                  Car="ViewModel.Car1" 
                                  Result="ViewModel.ResultCar1"
                                  IsBusy="ViewModel.IsLoading"
+                                 ShowDebugStats="ViewModel.ShowDebug"
                                  OnTransformChange="@(t => ViewModel.UpdateTransformAsync(1, t.x, t.y, t.rot))"
                                  OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(1))" />
 
@@ -46,6 +47,7 @@
                                  Car="ViewModel.Car2" 
                                  Result="ViewModel.ResultCar2"
                                  IsBusy="ViewModel.IsLoading"
+                                 ShowDebugStats="ViewModel.ShowDebug"
                                  OnTransformChange="@(t => ViewModel.UpdateTransformAsync(2, t.x, t.y, t.rot))"
                                  OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(2))" />
             </div>
@@ -53,9 +55,11 @@
         else if (activeTab == "lines")
         {
             <LineControlPanel TotalLines="ViewModel.Lines.Count"
+                              ShowDebug="ViewModel.ShowDebug"
                               OnAddLine="@(l => ViewModel.AddLineAsync(l.x1, l.y1, l.x2, l.y2))"
                               OnGenerate="@(n => ViewModel.GenerateRandomLinesAsync(n))"
-                              OnClear="@(() => ViewModel.ClearLinesAsync())" />
+                              OnClear="@(() => ViewModel.ClearLinesAsync())"
+                              OnDebugChange="@(v => ViewModel.ToggleDebugAsync(v))" />
         }
         else if (activeTab == "data")
         {

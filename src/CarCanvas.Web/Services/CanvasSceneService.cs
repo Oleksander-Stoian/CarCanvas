@@ -54,4 +54,9 @@ public class CanvasSceneService : ICanvasSceneService
         var flatPoints = points.SelectMany(p => new[] { p.X, p.Y }).ToArray();
         await _js.InvokeVoidAsync("canvasHelper.drawMarkersBatch", flatPoints);
     }
+
+    public async Task DrawRectAsync(int x, int y, int w, int h, string color)
+    {
+        await _js.InvokeVoidAsync("canvasHelper.drawRect", x, y, w, h, color);
+    }
 }

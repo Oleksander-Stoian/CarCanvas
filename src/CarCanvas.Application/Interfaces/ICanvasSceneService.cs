@@ -13,4 +13,5 @@ public interface ICanvasSceneService
     Task DrawLinesAsync(IEnumerable<LineSegment> lines);
     Task DrawMarkerAsync(Point2D point);
     Task DrawMarkersAsync(IEnumerable<Point2D> points);
+    Task DrawRectAsync(int x, int y, int w, int h, string color);
 }

@@ -62,5 +62,12 @@ window.canvasHelper = {
             this.ctx.arc(pointsFlat[i], pointsFlat[i+1], 3, 0, 2 * Math.PI);
             this.ctx.fill();
         }
+    },
+
+    drawRect: function (x, y, w, h, color) {
+        if (!this.ctx) return;
+        this.ctx.strokeStyle = color;
+        this.ctx.lineWidth = 1;
+        this.ctx.strokeRect(x, y, w, h);
     }
 };

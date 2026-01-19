@@ -31,6 +31,8 @@ public class DashboardViewModel
     public string? ErrorMessage { get; private set; }
     public int? LoadedPointsCount { get; private set; }
     public string? LoadedSourceName { get; private set; }
+    
+    public bool ShowDebug { get; set; } = false;
 
     public DashboardViewModel(
         ICarLoader carLoader, 
@@ -247,6 +249,27 @@ public class DashboardViewModel
         // If we want to persist markers until clear.
         if (ResultCar1 != null) await _canvasService.DrawMarkersAsync(ResultCar1.MarkersToDraw);
         if (ResultCar2 != null) await _canvasService.DrawMarkersAsync(ResultCar2.MarkersToDraw);
+
+        if (ShowDebug)
+        {
+            if (ResultCar1?.TargetCarAabb.HasValue == true)
+            {
+                var box = ResultCar1.TargetCarAabb.Value.Inflate(2, _options.CanvasWidth, _options.CanvasHeight);
+                await _canvasService.DrawRectAsync(box.MinX, box.MinY, box.MaxX - box.MinX, box.MaxY - box.MinY, "cyan");
+            }
+            if (ResultCar2?.TargetCarAabb.HasValue == true)
+            {
+                var box = ResultCar2.TargetCarAabb.Value.Inflate(2, _options.CanvasWidth, _options.CanvasHeight);
+                await _canvasService.DrawRectAsync(box.MinX, box.MinY, box.MaxX - box.MinX, box.MaxY - box.MinY, "lime");
+            }
+        }
+    }
+
+    public async Task ToggleDebugAsync(bool isDebug)
+    {
+        ShowDebug = isDebug;
+        await DrawSceneAsync();
+        NotifyStateChanged();
     }
 
     private void NotifyStateChanged() => OnChange?.Invoke();
