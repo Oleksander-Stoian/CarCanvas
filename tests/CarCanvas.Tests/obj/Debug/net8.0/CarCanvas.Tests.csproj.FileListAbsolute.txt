@@ -98,6 +98,7 @@ D:\Programing\logistics\tests\CarCanvas.Tests\obj\Debug\net8.0\CarCanvas.Tests.G
 D:\Programing\logistics\tests\CarCanvas.Tests\obj\Debug\net8.0\CarCanvas.Tests.AssemblyInfoInputs.cache
 D:\Programing\logistics\tests\CarCanvas.Tests\obj\Debug\net8.0\CarCanvas.Tests.AssemblyInfo.cs
 D:\Programing\logistics\tests\CarCanvas.Tests\obj\Debug\net8.0\CarCanvas.Tests.csproj.CoreCompileInputs.cache
+D:\Programing\logistics\tests\CarCanvas.Tests\obj\Debug\net8.0\CarCanvas.Tests.sourcelink.json
 D:\Programing\logistics\tests\CarCanvas.Tests\obj\Debug\net8.0\CarCanva.5FAECD7E.Up2Date
 D:\Programing\logistics\tests\CarCanvas.Tests\obj\Debug\net8.0\CarCanvas.Tests.dll
 D:\Programing\logistics\tests\CarCanvas.Tests\obj\Debug\net8.0\refint\CarCanvas.Tests.dll

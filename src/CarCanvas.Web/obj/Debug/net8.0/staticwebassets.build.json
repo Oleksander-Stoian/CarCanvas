@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cMUPfdEnlQdPR1lQPsgDIl6qf11+S/421q73A3NUjIw=",
+  "Hash": "amP0rqeMUGyYg+j+MKko3tnJEc9Br916dwP9+jJe6Ac=",
   "Source": "CarCanvas.Web",
   "BasePath": "/",
   "Mode": "Root",
@@ -8185,25 +8185,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Logan.txt"
-    },
-    {
-      "Identity": "D:\\Programing\\logistics\\src\\CarCanvas.Web\\wwwroot\\sample-data\\weather.json",
-      "SourceId": "CarCanvas.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Programing\\logistics\\src\\CarCanvas.Web\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "sample-data/weather.json",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\sample-data\\weather.json"
     }
   ]
 }

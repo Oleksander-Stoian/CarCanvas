@@ -13,6 +13,7 @@ namespace CarCanvas.Web.ViewModels;
 public class DashboardViewModel
 {
     private readonly ICarLoader _carLoader;
+    private readonly ICarPointsParser _pointsParser;
     private readonly IIntersectionService _intersectionService;
     private readonly ICanvasSceneService _canvasService;
     private readonly AppOptions _options;
@@ -28,46 +29,113 @@ public class DashboardViewModel
 
     public bool IsLoading { get; private set; }
     public string? ErrorMessage { get; private set; }
+    public int? LoadedPointsCount { get; private set; }
+    public string? LoadedSourceName { get; private set; }
 
     public DashboardViewModel(
         ICarLoader carLoader, 
+        ICarPointsParser pointsParser,
         IIntersectionService intersectionService,
         ICanvasSceneService canvasService,
         AppOptions options)
     {
         _carLoader = carLoader;
+        _pointsParser = pointsParser;
         _intersectionService = intersectionService;
         _canvasService = canvasService;
         _options = options;
+    }
+
+    public void SetError(string message)
+    {
+        ErrorMessage = message;
+        NotifyStateChanged();
     }
 
     public async Task InitializeAsync()
     {
         try
         {
+            await LoadSampleCarAsync();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"Failed to initialize: {ex.Message}";
+        }
+    }
+
+    public async Task LoadSampleCarAsync()
+    {
+        try
+        {
             IsLoading = true;
+            ErrorMessage = null;
             NotifyStateChanged();
 
             var points = await _carLoader.LoadPointsAsync("Logan.txt");
             var pointsList = points.ToList();
 
-            Car1 = new CarModel(1, pointsList);
-            Car2 = new CarModel(2, pointsList);
-
-            // Initial offset for Car 2
-            Car2.Transform.TranslateX = 900;
-
+            InitializeCars(pointsList, "sample (Logan.txt)");
+            
             await DrawSceneAsync();
         }
         catch (Exception ex)
         {
-            ErrorMessage = $"Failed to load car data: {ex.Message}";
+            ErrorMessage = $"Failed to load sample: {ex.Message}";
         }
         finally
         {
             IsLoading = false;
             NotifyStateChanged();
         }
+    }
+
+    public async Task LoadCarFromFileAsync(Stream fileStream, string fileName)
+    {
+        try
+        {
+            IsLoading = true;
+            ErrorMessage = null;
+            NotifyStateChanged();
+
+            var points = await _pointsParser.ParseAsync(fileStream);
+            InitializeCars(points, fileName);
+
+            await DrawSceneAsync();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"Failed to load file: {ex.Message}";
+        }
+        finally
+        {
+            IsLoading = false;
+            NotifyStateChanged();
+        }
+    }
+
+    private void InitializeCars(IReadOnlyList<Point2D> points, string sourceName)
+    {
+        LoadedPointsCount = points.Count;
+        LoadedSourceName = sourceName;
+
+        Car1 = new CarModel(1, points);
+        Car2 = new CarModel(2, points);
+
+        // Reset transforms
+        // Car 1 defaults
+        Car1.Transform.TranslateX = 0;
+        Car1.Transform.TranslateY = 0;
+        Car1.Transform.RotationAngle = 0;
+
+        // Car 2 defaults (offset)
+        Car2.Transform.TranslateX = 410; // Or 900 as before, but user mentioned 410 or default
+        Car2.Transform.TranslateY = 0;
+        Car2.Transform.RotationAngle = 0;
+
+        // Clear intersection results
+        ResultCar1 = null;
+        ResultCar2 = null;
     }
 
     public async Task UpdateTransformAsync(int carId, int tx, int ty, double rot)

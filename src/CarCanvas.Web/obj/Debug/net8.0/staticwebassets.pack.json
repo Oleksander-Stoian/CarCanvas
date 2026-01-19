@@ -45,10 +45,6 @@
       "PackagePath": "staticwebassets\\js\\canvasHelper.js"
     },
     {
-      "Id": "D:\\Programing\\logistics\\src\\CarCanvas.Web\\wwwroot\\sample-data\\weather.json",
-      "PackagePath": "staticwebassets\\sample-data\\weather.json"
-    },
-    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CarCanvas.Web.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

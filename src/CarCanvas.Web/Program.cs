@@ -15,6 +15,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 // Register Services
 builder.Services.AddScoped<ICarLoader, CarFileLoader>();
+builder.Services.AddScoped<ICarPointsParser, CarPointsParser>();
 builder.Services.AddScoped<IIntersectionService, IntersectionService>();
 builder.Services.AddScoped<ICanvasSceneService, CanvasSceneService>();
 builder.Services.AddScoped<DashboardViewModel>();

@@ -9,117 +9,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 767464182,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Pages.Home",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Home"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Pages.Home",
-          "Common.TypeNameIdentifier": "Home",
-          "Common.TypeNamespace": "CarCanvas.Web.Pages",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 1109043119,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Pages.Home",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.Pages.Home"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Pages.Home",
-          "Common.TypeNameIdentifier": "Home",
-          "Common.TypeNamespace": "CarCanvas.Web.Pages",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 565731379,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Pages.Weather",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Weather"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Pages.Weather",
-          "Common.TypeNameIdentifier": "Weather",
-          "Common.TypeNamespace": "CarCanvas.Web.Pages",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": -1837035276,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Pages.Weather",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.Pages.Weather"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Pages.Weather",
-          "Common.TypeNameIdentifier": "Weather",
-          "Common.TypeNamespace": "CarCanvas.Web.Pages",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": -887431033,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Pages.Counter",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Pages.Counter",
-          "Common.TypeNameIdentifier": "Counter",
-          "Common.TypeNamespace": "CarCanvas.Web.Pages",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": -1864001610,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Pages.Counter",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Pages.Counter",
-          "Common.TypeNameIdentifier": "Counter",
-          "Common.TypeNamespace": "CarCanvas.Web.Pages",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
         "HashCode": -2051828664,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Layout.MainLayout",
@@ -662,6 +551,43 @@
           "Common.TypeName": "CarCanvas.Web.Components.LineControlPanel",
           "Common.TypeNameIdentifier": "LineControlPanel",
           "Common.TypeNamespace": "CarCanvas.Web.Components",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 767464182,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Pages.Home",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Home"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Pages.Home",
+          "Common.TypeNameIdentifier": "Home",
+          "Common.TypeNamespace": "CarCanvas.Web.Pages",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 1109043119,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Pages.Home",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CarCanvas.Web.Pages.Home"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Pages.Home",
+          "Common.TypeNameIdentifier": "Home",
+          "Common.TypeNamespace": "CarCanvas.Web.Pages",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch",
           "Runtime.Name": "Components.IComponent"
         }
@@ -16919,11 +16845,6 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "d:\\Programing\\logistics\\src\\CarCanvas.Web\\Pages\\Weather.razor",
-      "TargetPath": "Pages\\Weather.razor",
-      "FileKind": "component"
-    },
-    {
       "FilePath": "d:\\Programing\\logistics\\src\\CarCanvas.Web\\Components\\CarControlPanel.razor",
       "TargetPath": "Components\\CarControlPanel.razor",
       "FileKind": "component"
@@ -16936,11 +16857,6 @@
     {
       "FilePath": "d:\\Programing\\logistics\\src\\CarCanvas.Web\\Components\\CanvasView.razor",
       "TargetPath": "Components\\CanvasView.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "d:\\Programing\\logistics\\src\\CarCanvas.Web\\Pages\\Counter.razor",
-      "TargetPath": "Pages\\Counter.razor",
       "FileKind": "component"
     },
     {

@@ -13,6 +13,33 @@
         </div>
     </div>
 
+    <!-- File Upload Section -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Car Data Source</h5>
+            <div class="d-flex flex-wrap align-items-center gap-3">
+                <div class="d-flex align-items-center gap-2">
+                     <label class="form-label mb-0 fw-bold">Upload car file (.txt):</label>
+                     <InputFile OnChange="LoadFile" class="form-control form-control-sm" style="width: auto;" accept=".txt" />
+                </div>
+                
+                <div class="vr"></div>
+                
+                <button class="btn btn-outline-secondary btn-sm" @onclick="LoadSample" disabled="@ViewModel.IsLoading">
+                    Load sample (Logan.txt)
+                </button>
+
+                @if (ViewModel.LoadedPointsCount.HasValue)
+                {
+                    <div class="ms-auto text-muted small">
+                        <strong>Source:</strong> @ViewModel.LoadedSourceName | 
+                        <strong>Loaded points:</strong> @ViewModel.LoadedPointsCount
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
     @if (ViewModel.ErrorMessage != null)
     {
         <div class="alert alert-danger">@ViewModel.ErrorMessage</div>
@@ -54,5 +81,29 @@
     public void Dispose()
     {
         ViewModel.OnChange -= StateHasChanged;
+    }
+
+    private async Task LoadFile(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file == null) return;
+
+        // Limit size (e.g. 2 MB)
+        long maxFileSize = 1024 * 1024 * 2; 
+
+        try
+        {
+            using var stream = file.OpenReadStream(maxFileSize);
+            await ViewModel.LoadCarFromFileAsync(stream, file.Name);
+        }
+        catch (Exception ex)
+        {
+            ViewModel.SetError($"File read error: {ex.Message}");
+        }
+    }
+
+    private async Task LoadSample()
+    {
+        await ViewModel.LoadSampleCarAsync();
     }
 }

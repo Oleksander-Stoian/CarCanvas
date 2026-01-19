@@ -8,9 +8,9 @@ D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.App
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.AssemblyInfoInputs.cache
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.AssemblyInfo.cs
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.csproj.CoreCompileInputs.cache
+D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.sourcelink.json
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanva.D0457563.Up2Date
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.dll
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\refint\CarCanvas.Application.dll
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.pdb
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\ref\CarCanvas.Application.dll
-D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.sourcelink.json
