@@ -13,3 +13,4 @@ D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.App
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\refint\CarCanvas.Application.dll
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.pdb
 D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\ref\CarCanvas.Application.dll
+D:\Programing\logistics\src\CarCanvas.Application\obj\Debug\net8.0\CarCanvas.Application.sourcelink.json

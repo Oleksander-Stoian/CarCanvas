@@ -28,9 +28,9 @@ public static class PointTransformer
             double xRot = x * cos - y * sin;
             double yRot = x * sin + y * cos;
 
-            // Translate back and apply offset
-            int xFinal = (int)Math.Round(xRot + cx + tx);
-            int yFinal = (int)Math.Round(yRot + cy + ty);
+            // 3 & 4. Translate back (cx, cy) and apply offset (tx, ty)
+            int xFinal = (int)Math.Round(xRot + cx + tx, MidpointRounding.AwayFromZero);
+            int yFinal = (int)Math.Round(yRot + cy + ty, MidpointRounding.AwayFromZero);
 
             yield return new Point2D(xFinal, yFinal);
         }

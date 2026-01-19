@@ -123,7 +123,10 @@ public class IntersectionService : IIntersectionService
 
     private int ComputeTransformHash(Transform t)
     {
-        return HashCode.Combine(t.TranslateX, t.TranslateY, t.RotationAngle);
+        // Normalize angle to reduce noise (e.g. from sliders)
+        // Also handle 360 wrapping if desired, but rounding is most important for stability
+        double normalizedAngle = Math.Round(t.RotationAngle, 3);
+        return HashCode.Combine(t.TranslateX, t.TranslateY, normalizedAngle);
     }
 
     private Point2D KeyToPoint(int key, int stride)

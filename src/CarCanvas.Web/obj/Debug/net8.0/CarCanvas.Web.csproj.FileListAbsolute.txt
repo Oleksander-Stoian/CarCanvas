@@ -1056,3 +1056,4 @@ D:\Programing\logistics\src\CarCanvas.Web\obj\Debug\net8.0\CarCanvas.Web.dll
 D:\Programing\logistics\src\CarCanvas.Web\obj\Debug\net8.0\refint\CarCanvas.Web.dll
 D:\Programing\logistics\src\CarCanvas.Web\obj\Debug\net8.0\CarCanvas.Web.pdb
 D:\Programing\logistics\src\CarCanvas.Web\obj\Debug\net8.0\ref\CarCanvas.Web.dll
+D:\Programing\logistics\src\CarCanvas.Web\obj\Debug\net8.0\CarCanvas.Web.sourcelink.json
