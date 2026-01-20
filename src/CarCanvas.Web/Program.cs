@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using CarCanvas.Web;
 using CarCanvas.Application;
 using CarCanvas.Application.Interfaces;
+using CarCanvas.Application.DTOs;
 using CarCanvas.Infrastructure.Services;
 using CarCanvas.Web.Services;
 using CarCanvas.Web.ViewModels;

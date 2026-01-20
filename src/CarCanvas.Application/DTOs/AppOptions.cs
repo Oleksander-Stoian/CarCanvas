@@ -1,4 +1,4 @@
-namespace CarCanvas.Application;
+namespace CarCanvas.Application.DTOs;
 
 public class AppOptions
 {
