@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CarCanvas.Application.Algorithms;
 using CarCanvas.Application.DTOs;
 using CarCanvas.Domain.Entities;
 
@@ -10,6 +11,7 @@ public interface IIntersectionService
     Task<IntersectionResult> FindIntersectionsAsync(
         CarModel targetCar, 
         CarModel otherCar, 
-        IEnumerable<LineSegment> lines,
-        AppOptions options);
+        IList<LineSegment> lines,
+        AppOptions options,
+        UniformGridIndex? gridIndex = null);
 }

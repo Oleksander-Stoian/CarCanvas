@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "CarCanvas.Web",
   "resources": {
-    "hash": "sha256-qyTexb/wd+zRilOlXIY1q2qnMQU+6HxrRHu1QfgocjY=",
+    "hash": "sha256-yFIK0CEOm70cM1etNTLcWKLusy7f/nSDu84PssknDls=",
     "jsModuleNative": {
       "dotnet.native.8.0.21.j55oui87mb.js": "sha256-9Fzd5We95Rp03dEKIAbYjPDR3eWyLbmjMlYStvxyiok="
     },
@@ -208,16 +208,16 @@
       "mscorlib.wasm": "sha256-MZJ1V6miMP318lQowft4FPkcszcibPLDTwKj235fSAc=",
       "netstandard.wasm": "sha256-RYAURbR1AHkUZYjKgu+B/i3N3VP4abnAaH+vxwJ8d3c=",
       "System.Private.CoreLib.wasm": "sha256-4YzdATaWUDkUkRpe+hl+T61TaCjRVapVUtqTIai3Gd8=",
-      "CarCanvas.Application.wasm": "sha256-Io7g+pdlEA/Dnuh41WUuQeKIil+17AYWHL5X9FnGBs8=",
-      "CarCanvas.Domain.wasm": "sha256-X3IFX9kBiWopjaoEoIzbvvrYHxRY/FuCtWZRuatQUnc=",
-      "CarCanvas.Infrastructure.wasm": "sha256-YH60R1FtPx9COXB2pIFjbLPxzRtki1o66yMc7/KhsGc=",
-      "CarCanvas.Web.wasm": "sha256-H3AEaGeWMul/hVuhKmCgOJVMk7HpQLq+pKFbSWeF44U="
+      "CarCanvas.Application.wasm": "sha256-RHbDs5SofLZuY25giRFPXLvnbMhxsJRYLqWdhKwE0cY=",
+      "CarCanvas.Domain.wasm": "sha256-dFQvyNQYUEaDreWCuTZqEQFpaKJfCpHoCRR/ziBvre0=",
+      "CarCanvas.Infrastructure.wasm": "sha256-2Cfgr3m2YLIZ9M8IzYl9U4mAJqDwRE6vErc4zwQyPgs=",
+      "CarCanvas.Web.wasm": "sha256-6btPYeRAWhOxvYAYp9c9DeUA3Fc2K7QunyaExc4lD5o="
     },
     "pdb": {
-      "CarCanvas.Application.pdb": "sha256-KYhm4a1eiDcyJ9tdQhbpHlS9yUsyJrddyFbf5aG8UKM=",
-      "CarCanvas.Infrastructure.pdb": "sha256-49SZcsZUIs/H/AVw6Yb/oyfcIJg+F3GLeuriLG47J5A=",
-      "CarCanvas.Domain.pdb": "sha256-HALNPz3rvXoaOQ3gsYUtVlCUTBzXgEzI5fOe2+VenP0=",
-      "CarCanvas.Web.pdb": "sha256-WIOhsjZlnV5PqbuvwTXDOHBFiRwm6tYWcSWKvAGsTfo="
+      "CarCanvas.Application.pdb": "sha256-VDeZrJdSbQvj7Fxn6i50bKyE00uZu9s9XmnqYHMvE9I=",
+      "CarCanvas.Infrastructure.pdb": "sha256-9/8gSQGvxr4Cx6yNC6qj8uNyMEaGrHQiTe31X4ug6oM=",
+      "CarCanvas.Domain.pdb": "sha256-IzGoJDFxj0XI3yUij6iICI7aATGjs+ztZVC5IInAwuo=",
+      "CarCanvas.Web.pdb": "sha256-Ws028UI5Fh9/tx07EAcw1U47Dh7Nd97HswNQBoY2p1Q="
     }
   },
   "cacheBootResources": true,

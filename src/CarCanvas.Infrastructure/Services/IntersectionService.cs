@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using CarCanvas.Application;
+using CarCanvas.Application.Algorithms;
 using CarCanvas.Application.DTOs;
 using CarCanvas.Application.Interfaces;
 using CarCanvas.Domain.Entities;
@@ -21,18 +22,20 @@ public class IntersectionService : IIntersectionService
     public async Task<IntersectionResult> FindIntersectionsAsync(
         CarModel targetCar, 
         CarModel otherCar, 
-        IEnumerable<LineSegment> lines,
-        AppOptions options)
+        IList<LineSegment> lines,
+        AppOptions options,
+        UniformGridIndex? gridIndex = null)
     {
         // Offload to thread pool for "heavy" operations
-        return await Task.Run(() => FindIntersectionsInternal(targetCar, otherCar, lines, options));
+        return await Task.Run(() => FindIntersectionsInternal(targetCar, otherCar, lines, options, gridIndex));
     }
 
     private IntersectionResult FindIntersectionsInternal(
         CarModel targetCar, 
         CarModel otherCar, 
-        IEnumerable<LineSegment> lines,
-        AppOptions options)
+        IList<LineSegment> lines,
+        AppOptions options,
+        UniformGridIndex? gridIndex)
     {
         var sw = Stopwatch.StartNew();
         var result = new IntersectionResult();
@@ -72,8 +75,25 @@ public class IntersectionService : IIntersectionService
         // Padded AABB for fast check (safe against rounding errors)
         var targetBoxPadded = targetBox.Inflate(2, options.CanvasWidth, options.CanvasHeight);
 
-        foreach (var line in lines)
+        // Determine candidates
+        IEnumerable<int> candidates;
+        if (gridIndex != null)
         {
+            // Use grid to find potential lines
+            // targetBoxPadded is already inflated, which is good for covering cells
+            candidates = gridIndex.GetCandidates(targetBoxPadded);
+        }
+        else
+        {
+            // Fallback: check all lines
+            candidates = Enumerable.Range(0, lines.Count);
+        }
+
+        foreach (var index in candidates)
+        {
+            if (index < 0 || index >= lines.Count) continue;
+            var line = lines[index];
+
             // Super-fast check: AABB vs AABB
             // Construct line AABB inline (O(1)) with 1px padding
             int lxMin, lxMax, lyMin, lyMax;

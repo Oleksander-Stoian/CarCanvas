@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CarCanvas.Application;
+using CarCanvas.Application.Algorithms;
 using CarCanvas.Application.DTOs;
 using CarCanvas.Application.Interfaces;
 using CarCanvas.Domain.Entities;
@@ -17,6 +18,7 @@ public class DashboardViewModel
     private readonly IIntersectionService _intersectionService;
     private readonly ICanvasSceneService _canvasService;
     private readonly AppOptions _options;
+    private readonly UniformGridIndex _gridIndex;
 
     public event Action? OnChange;
 
@@ -46,6 +48,7 @@ public class DashboardViewModel
         _intersectionService = intersectionService;
         _canvasService = canvasService;
         _options = options;
+        _gridIndex = new UniformGridIndex(options.CanvasWidth, options.CanvasHeight, 100); // CellSize = 100
     }
 
     public void SetError(string message)
@@ -156,6 +159,7 @@ public class DashboardViewModel
     {
         var line = new LineSegment(new Point2D(x1, y1), new Point2D(x2, y2));
         Lines.Add(line);
+        _gridIndex.Add(line, Lines.Count - 1);
         await _canvasService.DrawLineAsync(line);
         NotifyStateChanged();
     }
@@ -167,12 +171,15 @@ public class DashboardViewModel
 
         var rnd = new Random();
         var newLines = new List<LineSegment>(count);
+        int startIndex = Lines.Count;
 
         for (int i = 0; i < count; i++)
         {
             var p1 = new Point2D(rnd.Next(0, _options.CanvasWidth), rnd.Next(0, _options.CanvasHeight));
             var p2 = new Point2D(rnd.Next(0, _options.CanvasWidth), rnd.Next(0, _options.CanvasHeight));
-            newLines.Add(new LineSegment(p1, p2));
+            var line = new LineSegment(p1, p2);
+            newLines.Add(line);
+            _gridIndex.Add(line, startIndex + i);
         }
 
         Lines.AddRange(newLines);
@@ -186,6 +193,7 @@ public class DashboardViewModel
     public async Task ClearLinesAsync()
     {
         Lines.Clear();
+        _gridIndex.Clear();
         ResultCar1 = null;
         ResultCar2 = null;
         await DrawSceneAsync();
@@ -204,7 +212,7 @@ public class DashboardViewModel
         var target = carId == 1 ? Car1 : Car2;
         var other = carId == 1 ? Car2 : Car1;
 
-        var result = await _intersectionService.FindIntersectionsAsync(target, other, Lines, _options);
+        var result = await _intersectionService.FindIntersectionsAsync(target, other, Lines, _options, _gridIndex);
 
         if (carId == 1) ResultCar1 = result;
         else ResultCar2 = result;
