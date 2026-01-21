@@ -1,6 +1,7 @@
 @page "/"
 @using CarCanvas.Web.Components
 @using CarCanvas.Web.ViewModels
+@using CarCanvas.Application.Enums
 @inject DashboardViewModel ViewModel
 @implements IDisposable
 
@@ -64,6 +65,19 @@
         else if (activeTab == "data")
         {
              <div class="card-modern">
+                <div class="card-header-modern">Configuration</div>
+                <div class="d-flex flex-column gap-3">
+                    <div>
+                        <label class="form-label mb-1 text-muted small">Coordinate System</label>
+                        <select class="form-select" @onchange="@(async (e) => await ViewModel.SetCoordinateModeAsync(Enum.Parse<CoordinateMode>(e.Value!.ToString()!)))">
+                            <option value="@CoordinateMode.CanvasYDown" selected="@(ViewModel.CoordinateMode == CoordinateMode.CanvasYDown)">Canvas (Y down)</option>
+                            <option value="@CoordinateMode.MathYUp" selected="@(ViewModel.CoordinateMode == CoordinateMode.MathYUp)">Math / CAD (Y up)</option>
+                        </select>
+                    </div>
+                </div>
+             </div>
+
+             <div class="card-modern mt-3">
                 <div class="card-header-modern">Data Source</div>
                 <div class="d-flex flex-column gap-3">
                     <div>

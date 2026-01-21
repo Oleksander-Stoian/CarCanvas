@@ -8,6 +8,8 @@ namespace CarCanvas.Application.Interfaces;
 
 public interface IIntersectionService
 {
+    void InvalidateCache();
+
     Task<IntersectionResult> FindIntersectionsAsync(
         CarModel targetCar, 
         CarModel otherCar, 

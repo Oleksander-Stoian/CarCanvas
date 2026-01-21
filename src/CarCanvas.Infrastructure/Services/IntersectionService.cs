@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CarCanvas.Application;
 using CarCanvas.Application.Algorithms;
 using CarCanvas.Application.DTOs;
+using CarCanvas.Application.Enums;
 using CarCanvas.Application.Interfaces;
 using CarCanvas.Domain.Entities;
 using CarCanvas.Domain.ValueObjects;
@@ -18,6 +19,11 @@ public class IntersectionService : IIntersectionService
     // Cache: CarId -> (TransformHash, PixelSet, Aabb)
     // We need a way to compare Transforms efficiently.
     private readonly Dictionary<int, (int TransformHash, HashSet<int> PixelSet, Aabb Box)> _pixelSetCache = new();
+
+    public void InvalidateCache()
+    {
+        _pixelSetCache.Clear();
+    }
     
     public async Task<IntersectionResult> FindIntersectionsAsync(
         CarModel targetCar, 
@@ -41,8 +47,8 @@ public class IntersectionService : IIntersectionService
         var result = new IntersectionResult();
         
         // 1. Get PixelSets
-        var (targetPixels, targetBox) = GetOrUpdatePixelSet(targetCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
-        var (otherPixels, otherBox) = GetOrUpdatePixelSet(otherCar, options.StrideKey, options.CanvasWidth, options.CanvasHeight);
+        var (targetPixels, targetBox) = GetOrUpdatePixelSet(targetCar, options);
+        var (otherPixels, otherBox) = GetOrUpdatePixelSet(otherCar, options);
         
         // Save AABBs to result for debug
         result.TargetCarAabb = targetBox;
@@ -146,9 +152,9 @@ public class IntersectionService : IIntersectionService
         return result;
     }
 
-    private (HashSet<int> PixelSet, Aabb Box) GetOrUpdatePixelSet(CarModel car, int stride, int width, int height)
+    private (HashSet<int> PixelSet, Aabb Box) GetOrUpdatePixelSet(CarModel car, AppOptions options)
     {
-        int currentHash = ComputeTransformHash(car.Transform);
+        int currentHash = ComputeTransformHash(car.Transform, options.CoordinateMode);
 
         if (_pixelSetCache.TryGetValue(car.Id, out var cached))
         {
@@ -160,7 +166,12 @@ public class IntersectionService : IIntersectionService
 
         // Recompute
         var pixels = new HashSet<int>();
-        var transformedPoints = PointTransformer.TransformPoints(car.OriginalPoints, car.Center, car.Transform);
+        var transformedPoints = PointTransformer.TransformPoints(
+            car.OriginalPoints, 
+            car.Center, 
+            car.Transform, 
+            options.CoordinateMode, 
+            options.CanvasHeight);
         
         int minX = int.MaxValue;
         int maxX = int.MinValue;
@@ -177,9 +188,9 @@ public class IntersectionService : IIntersectionService
 
             // Filter out of bounds points if necessary, or just allow them but they won't match anything on canvas [0..W, 0..H]
             // We should filter to keep HashSet clean and matching valid canvas keys
-            if (p.X >= 0 && p.X < width && p.Y >= 0 && p.Y < height)
+            if (p.X >= 0 && p.X < options.CanvasWidth && p.Y >= 0 && p.Y < options.CanvasHeight)
             {
-                pixels.Add(p.Y * stride + p.X);
+                pixels.Add(p.Y * options.StrideKey + p.X);
             }
         }
 
@@ -194,12 +205,12 @@ public class IntersectionService : IIntersectionService
         return (pixels, box);
     }
 
-    private int ComputeTransformHash(Transform t)
+    private int ComputeTransformHash(Transform t, CoordinateMode mode)
     {
         // Normalize angle to reduce noise (e.g. from sliders)
         // Also handle 360 wrapping if desired, but rounding is most important for stability
         double normalizedAngle = Math.Round(t.RotationAngle, 3);
-        return HashCode.Combine(t.TranslateX, t.TranslateY, normalizedAngle);
+        return HashCode.Combine(t.TranslateX, t.TranslateY, normalizedAngle, mode);
     }
 
     private Point2D KeyToPoint(int key, int stride)

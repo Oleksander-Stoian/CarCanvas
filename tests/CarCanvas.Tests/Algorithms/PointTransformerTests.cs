@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using CarCanvas.Application.Enums;
 using CarCanvas.Domain.Entities;
 using CarCanvas.Domain.ValueObjects;
 using CarCanvas.Infrastructure.Algorithms;
@@ -16,7 +17,7 @@ public class PointTransformerTests
         var center = new Point2D(0, 0);
         var transform = new Transform { TranslateX = 10, TranslateY = 5, RotationAngle = 0 };
 
-        var result = PointTransformer.TransformPoints(points, center, transform).ToList();
+        var result = PointTransformer.TransformPoints(points, center, transform, CoordinateMode.CanvasYDown, 100).ToList();
 
         Assert.Single(result);
         Assert.Equal(10, result[0].X);
@@ -31,7 +32,7 @@ public class PointTransformerTests
         var center = new Point2D(0, 0);
         var transform = new Transform { TranslateX = 0, TranslateY = 0, RotationAngle = 90 };
 
-        var result = PointTransformer.TransformPoints(points, center, transform).ToList();
+        var result = PointTransformer.TransformPoints(points, center, transform, CoordinateMode.CanvasYDown, 100).ToList();
 
         Assert.Single(result);
         // Allowing for small rounding errors, but ints are exact here if logic is right

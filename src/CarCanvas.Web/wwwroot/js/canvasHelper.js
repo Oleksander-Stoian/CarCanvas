@@ -57,11 +57,17 @@ window.canvasHelper = {
     drawMarkersBatch: function (pointsFlat) {
         if (!this.ctx) return;
         this.ctx.fillStyle = 'red';
+        
+        // Optimization: Batch all circles into a single path
+        // This is much faster than calling beginPath/fill 20,000 times
+        this.ctx.beginPath();
         for (let i = 0; i < pointsFlat.length; i+=2) {
-            this.ctx.beginPath();
-            this.ctx.arc(pointsFlat[i], pointsFlat[i+1], 3, 0, 2 * Math.PI);
-            this.ctx.fill();
+            const x = pointsFlat[i];
+            const y = pointsFlat[i+1];
+            this.ctx.moveTo(x + 3, y);
+            this.ctx.arc(x, y, 3, 0, 2 * Math.PI);
         }
+        this.ctx.fill();
     },
 
     drawRect: function (x, y, w, h, color) {

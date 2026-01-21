@@ -23,7 +23,7 @@ Web application for visualizing and intersecting "cars" (point sets) and lines.
     dotnet run --project src/CarCanvas.Web/CarCanvas.Web.csproj
     ```
 
-3.  Open browser at `http://localhost:5000` (or the port shown in console).
+3.  Open browser at `http://localhost:5228` (or the port shown in console).
 
 ## Running with Docker
 

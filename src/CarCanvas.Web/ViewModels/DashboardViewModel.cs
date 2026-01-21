@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CarCanvas.Application;
 using CarCanvas.Application.Algorithms;
 using CarCanvas.Application.DTOs;
+using CarCanvas.Application.Enums;
 using CarCanvas.Application.Interfaces;
 using CarCanvas.Domain.Entities;
 using CarCanvas.Domain.ValueObjects;
@@ -21,6 +22,8 @@ public class DashboardViewModel
     private UniformGridIndex? _gridIndex;
 
     public event Action? OnChange;
+
+    public CoordinateMode CoordinateMode { get; private set; } = CoordinateMode.MathYUp;
 
     public CarModel? Car1 { get; private set; }
     public CarModel? Car2 { get; private set; }
@@ -48,6 +51,23 @@ public class DashboardViewModel
         _intersectionService = intersectionService;
         _canvasService = canvasService;
         _options = options;
+        CoordinateMode = _options.CoordinateMode;
+    }
+
+    public async Task SetCoordinateModeAsync(CoordinateMode mode)
+    {
+        CoordinateMode = mode;
+        _options.CoordinateMode = mode;
+
+        // Invalidate results
+        ResultCar1 = null;
+        ResultCar2 = null;
+
+        // Force PixelSet cache invalidation
+        _intersectionService.InvalidateCache();
+
+        await DrawSceneAsync();
+        NotifyStateChanged();
     }
 
     public void SetError(string message)
@@ -248,13 +268,23 @@ public class DashboardViewModel
         // Draw Cars
         if (Car1 != null)
         {
-            var points1 = CarCanvas.Infrastructure.Algorithms.PointTransformer.TransformPoints(Car1.OriginalPoints, Car1.Center, Car1.Transform);
+            var points1 = CarCanvas.Infrastructure.Algorithms.PointTransformer.TransformPoints(
+                Car1.OriginalPoints, 
+                Car1.Center, 
+                Car1.Transform, 
+                CoordinateMode, 
+                _options.CanvasHeight);
             await _canvasService.DrawCarAsync(points1, "blue");
         }
 
         if (Car2 != null)
         {
-            var points2 = CarCanvas.Infrastructure.Algorithms.PointTransformer.TransformPoints(Car2.OriginalPoints, Car2.Center, Car2.Transform);
+            var points2 = CarCanvas.Infrastructure.Algorithms.PointTransformer.TransformPoints(
+                Car2.OriginalPoints, 
+                Car2.Center, 
+                Car2.Transform, 
+                CoordinateMode, 
+                _options.CanvasHeight);
             await _canvasService.DrawCarAsync(points2, "green");
         }
         
