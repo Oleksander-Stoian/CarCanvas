@@ -50,11 +50,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj",
+      "projectUniqueName": "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj",
       "projectName": "CarCanvas.Infrastructure",
-      "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj",
+      "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\obj\\",
+      "outputPath": "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
