@@ -56,18 +56,51 @@ window.canvasHelper = {
     
     drawMarkersBatch: function (pointsFlat) {
         if (!this.ctx) return;
-        this.ctx.fillStyle = 'red';
         
-        // Optimization: Batch all circles into a single path
-        // This is much faster than calling beginPath/fill 20,000 times
-        this.ctx.beginPath();
-        for (let i = 0; i < pointsFlat.length; i+=2) {
-            const x = pointsFlat[i];
-            const y = pointsFlat[i+1];
-            this.ctx.moveTo(x + 3, y);
-            this.ctx.arc(x, y, 3, 0, 2 * Math.PI);
+        // Optimization for massive amount of markers:
+        // Use ImageData if points > 5000, otherwise use Path (circles)
+        // Circles are nicer but slower. ImageData is instant but just pixels.
+        
+        const count = pointsFlat.length / 2;
+        
+        if (count > 5000) {
+             // 1. Pixel-based rendering (ImageData) - Extremely fast for 100k+
+             const imgData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+             const data = imgData.data;
+             const w = this.canvas.width;
+             const h = this.canvas.height;
+             
+             // Red color: R=255, G=0, B=0, A=255
+             for (let i = 0; i < pointsFlat.length; i+=2) {
+                 const x = pointsFlat[i];
+                 const y = pointsFlat[i+1];
+                 
+                 if (x >= 0 && x < w && y >= 0 && y < h) {
+                     // Draw a small 3x3 cross or block to make it visible
+                     // Center
+                     let idx = (y * w + x) * 4;
+                     data[idx] = 255; data[idx+1] = 0; data[idx+2] = 0; data[idx+3] = 255;
+                     
+                     // Plus shape neighbors (optional, makes it thicker than 1px)
+                     if (x+1 < w) { idx = (y * w + (x+1)) * 4; data[idx] = 255; data[idx+3] = 255; }
+                     if (x-1 >= 0) { idx = (y * w + (x-1)) * 4; data[idx] = 255; data[idx+3] = 255; }
+                     if (y+1 < h) { idx = ((y+1) * w + x) * 4; data[idx] = 255; data[idx+3] = 255; }
+                     if (y-1 >= 0) { idx = ((y-1) * w + x) * 4; data[idx] = 255; data[idx+3] = 255; }
+                 }
+             }
+             this.ctx.putImageData(imgData, 0, 0);
+        } else {
+             // 2. Vector-based rendering (Circles) - Nicer for small amounts
+            this.ctx.fillStyle = 'red';
+            this.ctx.beginPath();
+            for (let i = 0; i < pointsFlat.length; i+=2) {
+                const x = pointsFlat[i];
+                const y = pointsFlat[i+1];
+                this.ctx.moveTo(x + 3, y);
+                this.ctx.arc(x, y, 3, 0, 2 * Math.PI);
+            }
+            this.ctx.fill();
         }
-        this.ctx.fill();
     },
 
     drawRect: function (x, y, w, h, color) {

@@ -70,6 +70,14 @@ public class DashboardViewModel
         NotifyStateChanged();
     }
 
+    public void UpdateMarkersLimit(int limit)
+    {
+        _options.MaxMarkersToDraw = limit;
+        NotifyStateChanged();
+    }
+
+    public int GetMaxMarkers() => _options.MaxMarkersToDraw;
+
     public void SetError(string message)
     {
         ErrorMessage = message;

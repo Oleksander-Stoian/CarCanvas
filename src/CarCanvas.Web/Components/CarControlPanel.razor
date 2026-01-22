@@ -10,31 +10,36 @@
         {
             <div class="row g-2 align-items-center mb-2">
                 <div class="col-auto">
-                    <label class="col-form-label">Translate X:</label>
+                    <label class="col-form-label small">X Translate:</label>
                 </div>
-                <div class="col-auto">
-                    <input type="number" class="form-control" value="@Car.Transform.TranslateX" 
+                <div class="col">
+                    <input type="number" class="form-control form-control-sm" value="@Car.Transform.TranslateX" 
                            @onchange="@(e => OnTransformChanged("x", e.Value))" />
                 </div>
+            </div>
+            <div class="row g-2 align-items-center mb-2">
                 <div class="col-auto">
-                    <label class="col-form-label">Y:</label>
+                    <label class="col-form-label small">Y Translate:</label>
                 </div>
-                <div class="col-auto">
-                    <input type="number" class="form-control" value="@Car.Transform.TranslateY" 
+                <div class="col">
+                    <input type="number" class="form-control form-control-sm" value="@Car.Transform.TranslateY" 
                            @onchange="@(e => OnTransformChanged("y", e.Value))" />
                 </div>
             </div>
-            <div class="row g-2 align-items-center mb-3">
+            <div class="row g-2 align-items-center mb-1">
                 <div class="col-auto">
-                    <label class="col-form-label">Rotation (°):</label>
+                    <label class="col-form-label small">Rotation angle:</label>
                 </div>
-                <div class="col-auto">
-                    <input type="number" class="form-control" value="@Car.Transform.RotationAngle" 
+                <div class="col">
+                    <input type="number" class="form-control form-control-sm" value="@Car.Transform.RotationAngle" 
                            @onchange="@(e => OnTransformChanged("rot", e.Value))" />
                 </div>
             </div>
+            <div class="mb-3 text-muted text-end" style="font-size: 0.7em;">
+                * Rotation in degrees
+            </div>
             
-            <button class="btn btn-primary w-100 mb-2" @onclick="OnShowIntersections" disabled="@IsBusy">
+            <button class="btn btn-primary btn-sm w-100 mb-2" @onclick="OnShowIntersections" disabled="@IsBusy">
                 @if (IsBusy)
                 {
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -50,10 +55,23 @@
             {
                 <div class="alert alert-info mt-2 p-2">
                     <small>
-                        <div>Time: <strong>@Result.TimeElapsedMs ms</strong></div>
+                        <div class="d-flex justify-content-between">
+                            <span>Last calc time:</span>
+                            <strong>@Result.TimeElapsedMs ms</strong>
+                        </div>
+                        <hr class="my-1"/>
                         <div>Lines hits: @Result.TotalHitsLines</div>
                         <div>Cars hits: @Result.TotalHitsCars</div>
                         <div>Total: @Result.TotalIntersections</div>
+                        
+                        @if (Result.TotalIntersections > Result.MarkersToDraw.Count)
+                        {
+                             <div class="text-warning mt-1" style="font-weight: 600;">
+                                <i class="bi bi-exclamation-triangle"></i> 
+                                Showing first @Result.MarkersToDraw.Count of @Result.TotalIntersections intersections (increase limit to see more)
+                            </div>
+                        }
+
                         @if (ShowDebugStats)
                         {
                             <hr class="my-1"/>
