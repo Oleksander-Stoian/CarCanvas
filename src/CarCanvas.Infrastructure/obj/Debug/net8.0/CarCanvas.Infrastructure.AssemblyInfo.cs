@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarCanvas.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56cd47de3d08888c066388b27562ee7841d6f494")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4a78e087705594ded07b96983737b66c63e7c69")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarCanvas.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarCanvas.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

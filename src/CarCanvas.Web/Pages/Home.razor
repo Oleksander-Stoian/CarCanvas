@@ -3,6 +3,7 @@
 @using CarCanvas.Web.ViewModels
 @using CarCanvas.Application.Enums
 @inject DashboardViewModel ViewModel
+@inject ILogger<Home> AppLogger
 @implements IDisposable
 
 <PageTitle>CarCanvas - Dashboard</PageTitle>
@@ -125,10 +126,25 @@
 @code {
     private string activeTab = "cars";
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         ViewModel.OnChange += StateHasChanged;
-        await ViewModel.InitializeAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await ViewModel.InitializeAsync();
+            }
+            catch (Exception ex)
+            {
+                AppLogger.LogError(ex, "Error initializing Home component");
+                ViewModel.SetError($"Initialization error: {ex.Message}");
+            }
+        }
     }
 
     public void Dispose()

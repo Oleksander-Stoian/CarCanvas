@@ -9,174 +9,183 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 1884542085,
+        "HashCode": 1022352591,
         "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Components.CarControlPanel",
+        "Name": "CarCanvas.Web.App",
         "AssemblyName": "CarCanvas.Web",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "CarControlPanel"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title",
-              "Common.GloballyQualifiedTypeName": "global::System.String"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Car",
-            "TypeName": "CarCanvas.Domain.Entities.CarModel",
-            "Metadata": {
-              "Common.PropertyName": "Car",
-              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Domain.Entities.CarModel"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Result",
-            "TypeName": "CarCanvas.Application.DTOs.IntersectionResult",
-            "Metadata": {
-              "Common.PropertyName": "Result",
-              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.DTOs.IntersectionResult"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "IsBusy",
-            "TypeName": "System.Boolean",
-            "Metadata": {
-              "Common.PropertyName": "IsBusy",
-              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "ShowDebugStats",
-            "TypeName": "System.Boolean",
-            "Metadata": {
-              "Common.PropertyName": "ShowDebugStats",
-              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "OnTransformChange",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
-            "Metadata": {
-              "Common.PropertyName": "OnTransformChange",
-              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<(global::System.Int32 x, global::System.Int32 y, global::System.Double rot)>",
-              "Components.EventCallback": "True"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "OnFindIntersections",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
-            "Metadata": {
-              "Common.PropertyName": "OnFindIntersections",
-              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback",
-              "Components.EventCallback": "True"
-            }
+            "TagName": "App"
           }
         ],
         "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Components.CarControlPanel",
-          "Common.TypeNameIdentifier": "CarControlPanel",
-          "Common.TypeNamespace": "CarCanvas.Web.Components",
+          "Common.TypeName": "CarCanvas.Web.App",
+          "Common.TypeNameIdentifier": "App",
+          "Common.TypeNamespace": "CarCanvas.Web",
           "Runtime.Name": "Components.IComponent"
         }
       },
       {
-        "HashCode": 264818882,
+        "HashCode": 1115875458,
         "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Components.CarControlPanel",
+        "Name": "CarCanvas.Web.App",
         "AssemblyName": "CarCanvas.Web",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "CarCanvas.Web.Components.CarControlPanel"
+            "TagName": "CarCanvas.Web.App"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.App",
+          "Common.TypeNameIdentifier": "App",
+          "Common.TypeNamespace": "CarCanvas.Web",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 269691704,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Layout.NavMenu",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.NavMenu",
+          "Common.TypeNameIdentifier": "NavMenu",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": -1970563029,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Layout.NavMenu",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CarCanvas.Web.Layout.NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.NavMenu",
+          "Common.TypeNameIdentifier": "NavMenu",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": -2051828664,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Layout.MainLayout",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "MainLayout"
           }
         ],
         "BoundAttributes": [
           {
             "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
+            "Name": "Body",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
             "Metadata": {
-              "Common.PropertyName": "Title",
-              "Common.GloballyQualifiedTypeName": "global::System.String"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Car",
-            "TypeName": "CarCanvas.Domain.Entities.CarModel",
-            "Metadata": {
-              "Common.PropertyName": "Car",
-              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Domain.Entities.CarModel"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Result",
-            "TypeName": "CarCanvas.Application.DTOs.IntersectionResult",
-            "Metadata": {
-              "Common.PropertyName": "Result",
-              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.DTOs.IntersectionResult"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "IsBusy",
-            "TypeName": "System.Boolean",
-            "Metadata": {
-              "Common.PropertyName": "IsBusy",
-              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "ShowDebugStats",
-            "TypeName": "System.Boolean",
-            "Metadata": {
-              "Common.PropertyName": "ShowDebugStats",
-              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "OnTransformChange",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
-            "Metadata": {
-              "Common.PropertyName": "OnTransformChange",
-              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<(global::System.Int32 x, global::System.Int32 y, global::System.Double rot)>",
-              "Components.EventCallback": "True"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "OnFindIntersections",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
-            "Metadata": {
-              "Common.PropertyName": "OnFindIntersections",
-              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback",
-              "Components.EventCallback": "True"
+              "Common.PropertyName": "Body",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.RenderFragment",
+              "Components.ChildContent": "True"
             }
           }
         ],
         "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Components.CarControlPanel",
-          "Common.TypeNameIdentifier": "CarControlPanel",
-          "Common.TypeNamespace": "CarCanvas.Web.Components",
+          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout",
+          "Common.TypeNameIdentifier": "MainLayout",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": -190946803,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Layout.MainLayout",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CarCanvas.Web.Layout.MainLayout"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Body",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+            "Metadata": {
+              "Common.PropertyName": "Body",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.RenderFragment",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout",
+          "Common.TypeNameIdentifier": "MainLayout",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch",
           "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 1161472002,
+        "Kind": "Components.ChildContent",
+        "Name": "CarCanvas.Web.Layout.MainLayout.Body",
+        "AssemblyName": "CarCanvas.Web",
+        "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Body",
+            "ParentTag": "MainLayout"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout.Body",
+          "Common.TypeNameIdentifier": "MainLayout",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Components.IsSpecialKind": "Components.ChildContent",
+          "Runtime.Name": "Components.None"
+        }
+      },
+      {
+        "HashCode": 1893881561,
+        "Kind": "Components.ChildContent",
+        "Name": "CarCanvas.Web.Layout.MainLayout.Body",
+        "AssemblyName": "CarCanvas.Web",
+        "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Body",
+            "ParentTag": "CarCanvas.Web.Layout.MainLayout"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout.Body",
+          "Common.TypeNameIdentifier": "MainLayout",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Components.IsSpecialKind": "Components.ChildContent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.None"
         }
       },
       {
@@ -452,181 +461,172 @@
         }
       },
       {
-        "HashCode": -2051828664,
+        "HashCode": 1884542085,
         "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Layout.MainLayout",
+        "Name": "CarCanvas.Web.Components.CarControlPanel",
         "AssemblyName": "CarCanvas.Web",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "MainLayout"
+            "TagName": "CarControlPanel"
           }
         ],
         "BoundAttributes": [
           {
             "Kind": "Components.Component",
-            "Name": "Body",
-            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
-            "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+            "Name": "Title",
+            "TypeName": "System.String",
             "Metadata": {
-              "Common.PropertyName": "Body",
-              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.RenderFragment",
-              "Components.ChildContent": "True"
+              "Common.PropertyName": "Title",
+              "Common.GloballyQualifiedTypeName": "global::System.String"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Car",
+            "TypeName": "CarCanvas.Domain.Entities.CarModel",
+            "Metadata": {
+              "Common.PropertyName": "Car",
+              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Domain.Entities.CarModel"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Result",
+            "TypeName": "CarCanvas.Application.DTOs.IntersectionResult",
+            "Metadata": {
+              "Common.PropertyName": "Result",
+              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.DTOs.IntersectionResult"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "IsBusy",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "IsBusy",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "ShowDebugStats",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "ShowDebugStats",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnTransformChange",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
+            "Metadata": {
+              "Common.PropertyName": "OnTransformChange",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<(global::System.Int32 x, global::System.Int32 y, global::System.Double rot)>",
+              "Components.EventCallback": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnFindIntersections",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnFindIntersections",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback",
+              "Components.EventCallback": "True"
             }
           }
         ],
         "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout",
-          "Common.TypeNameIdentifier": "MainLayout",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Common.TypeName": "CarCanvas.Web.Components.CarControlPanel",
+          "Common.TypeNameIdentifier": "CarControlPanel",
+          "Common.TypeNamespace": "CarCanvas.Web.Components",
           "Runtime.Name": "Components.IComponent"
         }
       },
       {
-        "HashCode": -190946803,
+        "HashCode": 264818882,
         "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Layout.MainLayout",
+        "Name": "CarCanvas.Web.Components.CarControlPanel",
         "AssemblyName": "CarCanvas.Web",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "CarCanvas.Web.Layout.MainLayout"
+            "TagName": "CarCanvas.Web.Components.CarControlPanel"
           }
         ],
         "BoundAttributes": [
           {
             "Kind": "Components.Component",
-            "Name": "Body",
-            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
-            "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+            "Name": "Title",
+            "TypeName": "System.String",
             "Metadata": {
-              "Common.PropertyName": "Body",
-              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.RenderFragment",
-              "Components.ChildContent": "True"
+              "Common.PropertyName": "Title",
+              "Common.GloballyQualifiedTypeName": "global::System.String"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Car",
+            "TypeName": "CarCanvas.Domain.Entities.CarModel",
+            "Metadata": {
+              "Common.PropertyName": "Car",
+              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Domain.Entities.CarModel"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Result",
+            "TypeName": "CarCanvas.Application.DTOs.IntersectionResult",
+            "Metadata": {
+              "Common.PropertyName": "Result",
+              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.DTOs.IntersectionResult"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "IsBusy",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "IsBusy",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "ShowDebugStats",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "ShowDebugStats",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnTransformChange",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
+            "Metadata": {
+              "Common.PropertyName": "OnTransformChange",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<(global::System.Int32 x, global::System.Int32 y, global::System.Double rot)>",
+              "Components.EventCallback": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnFindIntersections",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback",
+            "Metadata": {
+              "Common.PropertyName": "OnFindIntersections",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback",
+              "Components.EventCallback": "True"
             }
           }
         ],
         "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout",
-          "Common.TypeNameIdentifier": "MainLayout",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 1161472002,
-        "Kind": "Components.ChildContent",
-        "Name": "CarCanvas.Web.Layout.MainLayout.Body",
-        "AssemblyName": "CarCanvas.Web",
-        "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Body",
-            "ParentTag": "MainLayout"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout.Body",
-          "Common.TypeNameIdentifier": "MainLayout",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Components.IsSpecialKind": "Components.ChildContent",
-          "Runtime.Name": "Components.None"
-        }
-      },
-      {
-        "HashCode": 1893881561,
-        "Kind": "Components.ChildContent",
-        "Name": "CarCanvas.Web.Layout.MainLayout.Body",
-        "AssemblyName": "CarCanvas.Web",
-        "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Body",
-            "ParentTag": "CarCanvas.Web.Layout.MainLayout"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout.Body",
-          "Common.TypeNameIdentifier": "MainLayout",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.None"
-        }
-      },
-      {
-        "HashCode": 269691704,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Layout.NavMenu",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.NavMenu",
-          "Common.TypeNameIdentifier": "NavMenu",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": -1970563029,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Layout.NavMenu",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.Layout.NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.NavMenu",
-          "Common.TypeNameIdentifier": "NavMenu",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 1022352591,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.App",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.App",
-          "Common.TypeNameIdentifier": "App",
-          "Common.TypeNamespace": "CarCanvas.Web",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 1115875458,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.App",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.App"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.App",
-          "Common.TypeNameIdentifier": "App",
-          "Common.TypeNamespace": "CarCanvas.Web",
+          "Common.TypeName": "CarCanvas.Web.Components.CarControlPanel",
+          "Common.TypeNameIdentifier": "CarControlPanel",
+          "Common.TypeNamespace": "CarCanvas.Web.Components",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch",
           "Runtime.Name": "Components.IComponent"
         }

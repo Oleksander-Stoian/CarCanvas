@@ -13,7 +13,19 @@
     </header>
 
     <main class="app-main">
-        @Body
+        <ErrorBoundary>
+            <ChildContent>
+                @Body
+            </ChildContent>
+            <ErrorContent>
+                <div class="alert alert-danger m-3">
+                    <h4 class="alert-heading">Application Error</h4>
+                    <p>@context.Message</p>
+                    <hr>
+                    <p class="mb-0 small" style="white-space: pre-wrap;">@context.StackTrace</p>
+                </div>
+            </ErrorContent>
+        </ErrorBoundary>
     </main>
 </div>
 

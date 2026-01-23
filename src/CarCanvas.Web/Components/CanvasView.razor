@@ -1,4 +1,6 @@
 @inject CarCanvas.Application.Interfaces.ICanvasSceneService CanvasService
+@inject ILogger<CanvasView> CanvasLogger
+@using Microsoft.Extensions.Logging
 @using CarCanvas.Application.Enums
 
 <div style="display: flex; flex-direction: column; width: fit-content;">
@@ -46,7 +48,14 @@
     {
         if (firstRender)
         {
-            await CanvasService.InitializeAsync(Id);
+            try
+            {
+                await CanvasService.InitializeAsync(Id);
+            }
+            catch (Exception ex)
+            {
+                CanvasLogger.LogError(ex, "Failed to initialize Canvas with Id: {Id}", Id);
+            }
         }
     }
 }
