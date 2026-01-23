@@ -21,6 +21,11 @@ public class CanvasSceneService : ICanvasSceneService
         await _js.InvokeVoidAsync("canvasHelper.init", canvasId);
     }
 
+    public async Task SetCoordinateModeAsync(int mode)
+    {
+        await _js.InvokeVoidAsync("canvasHelper.setCoordinateMode", mode);
+    }
+
     public async Task ClearAsync()
     {
         await _js.InvokeVoidAsync("canvasHelper.clear");

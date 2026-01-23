@@ -180,101 +180,6 @@
         }
       },
       {
-        "HashCode": 532303252,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Components.CanvasView",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CanvasView"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Id",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Id",
-              "Common.GloballyQualifiedTypeName": "global::System.String"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Width",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Width",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Height",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Height",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Components.CanvasView",
-          "Common.TypeNameIdentifier": "CanvasView",
-          "Common.TypeNamespace": "CarCanvas.Web.Components",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": -1420138594,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Components.CanvasView",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.Components.CanvasView"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Id",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Id",
-              "Common.GloballyQualifiedTypeName": "global::System.String"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Width",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Width",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Height",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Height",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Components.CanvasView",
-          "Common.TypeNameIdentifier": "CanvasView",
-          "Common.TypeNamespace": "CarCanvas.Web.Components",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
         "HashCode": -1836207986,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.LineControlPanel",
@@ -426,6 +331,121 @@
         "Metadata": {
           "Common.TypeName": "CarCanvas.Web.Components.LineControlPanel",
           "Common.TypeNameIdentifier": "LineControlPanel",
+          "Common.TypeNamespace": "CarCanvas.Web.Components",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": -1145130962,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Components.CanvasView",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CanvasView"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.String"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Width",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Width",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Height",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Height",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Mode",
+            "TypeName": "CarCanvas.Application.Enums.CoordinateMode",
+            "IsEnum": true,
+            "Metadata": {
+              "Common.PropertyName": "Mode",
+              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.Enums.CoordinateMode"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Components.CanvasView",
+          "Common.TypeNameIdentifier": "CanvasView",
+          "Common.TypeNamespace": "CarCanvas.Web.Components",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 243921953,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Components.CanvasView",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CarCanvas.Web.Components.CanvasView"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.String"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Width",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Width",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Height",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Height",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Mode",
+            "TypeName": "CarCanvas.Application.Enums.CoordinateMode",
+            "IsEnum": true,
+            "Metadata": {
+              "Common.PropertyName": "Mode",
+              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.Enums.CoordinateMode"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Components.CanvasView",
+          "Common.TypeNameIdentifier": "CanvasView",
           "Common.TypeNamespace": "CarCanvas.Web.Components",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch",
           "Runtime.Name": "Components.IComponent"

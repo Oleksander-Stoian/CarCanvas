@@ -58,6 +58,10 @@ public class DashboardViewModel
     {
         CoordinateMode = mode;
         _options.CoordinateMode = mode;
+        
+        // Update JS Canvas Grid
+        int modeInt = (mode == CoordinateMode.MathYUp) ? 1 : 0;
+        await _canvasService.SetCoordinateModeAsync(modeInt);
 
         // Invalidate results
         ResultCar1 = null;
@@ -93,6 +97,10 @@ public class DashboardViewModel
             {
                 _gridIndex = new UniformGridIndex(_options.CanvasWidth, _options.CanvasHeight, 100);
             }
+
+            // Sync coordinate mode with JS
+            int modeInt = (CoordinateMode == CoordinateMode.MathYUp) ? 1 : 0;
+            await _canvasService.SetCoordinateModeAsync(modeInt);
 
             await LoadSampleCarAsync();
         }
@@ -190,7 +198,17 @@ public class DashboardViewModel
 
     public async Task AddLineAsync(int x1, int y1, int x2, int y2)
     {
-        var line = new LineSegment(new Point2D(x1, y1), new Point2D(x2, y2));
+        // Adjust inputs based on coordinate system
+        int actualY1 = y1;
+        int actualY2 = y2;
+
+        if (CoordinateMode == CoordinateMode.MathYUp)
+        {
+            actualY1 = _options.CanvasHeight - y1;
+            actualY2 = _options.CanvasHeight - y2;
+        }
+
+        var line = new LineSegment(new Point2D(x1, actualY1), new Point2D(x2, actualY2));
         Lines.Add(line);
         _gridIndex?.Add(line, Lines.Count - 1);
         await _canvasService.DrawLineAsync(line);
