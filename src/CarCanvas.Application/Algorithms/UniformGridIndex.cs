@@ -50,9 +50,6 @@ public class UniformGridIndex
             
             if (!visited.Add(cellKey)) continue;
 
-            // Optional: Fallback check with Liang-Barsky for extreme precision or debug
-            // if (!LiangBarskyIntersect(line, col * _cellSize, row * _cellSize, _cellSize)) continue;
-
             AddInternal(col, row, lineIndex);
         }
     }
@@ -250,56 +247,5 @@ public class UniformGridIndex
     {
         if (x >= 0) return x / d;
         return (x - d + 1) / d;
-    }
-
-    // Made public static for testing/validation purposes
-    public static bool LiangBarskyIntersect(LineSegment line, int cellX, int cellY, int size)
-    {
-        double x0 = line.Start.X;
-        double y0 = line.Start.Y;
-        double x1 = line.End.X;
-        double y1 = line.End.Y;
-
-        double minX = cellX;
-        double maxX = cellX + size;
-        double minY = cellY;
-        double maxY = cellY + size;
-
-        double t0 = 0.0;
-        double t1 = 1.0;
-        
-        double dx = x1 - x0;
-        double dy = y1 - y0;
-
-        double p = 0, q = 0;
-
-        for (int edge = 0; edge < 4; edge++)
-        {
-            if (edge == 0) { p = -dx; q = x0 - minX; }      // Left
-            if (edge == 1) { p = dx;  q = maxX - x0; }      // Right
-            if (edge == 2) { p = -dy; q = y0 - minY; }      // Bottom
-            if (edge == 3) { p = dy;  q = maxY - y0; }      // Top
-
-            if (p == 0) 
-            {
-                if (q < 0) return false; 
-            }
-            else
-            {
-                double t = q / p;
-                if (p < 0)
-                {
-                    if (t > t1) return false;
-                    if (t > t0) t0 = t;
-                }
-                else
-                {
-                    if (t < t0) return false;
-                    if (t < t1) t1 = t;
-                }
-            }
-        }
-
-        return t0 <= t1;
     }
 }

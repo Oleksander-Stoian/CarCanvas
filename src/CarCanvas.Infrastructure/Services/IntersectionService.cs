@@ -44,6 +44,13 @@ public class IntersectionService : IIntersectionService
         UniformGridIndex? gridIndex)
     {
         var sw = Stopwatch.StartNew();
+
+        // Guard: StrideKey must be >= CanvasWidth to avoid hash collisions
+        if (options.StrideKey < options.CanvasWidth)
+        {
+            throw new ArgumentException($"StrideKey ({options.StrideKey}) must be >= CanvasWidth ({options.CanvasWidth}) to avoid hash collisions.");
+        }
+
         var result = new IntersectionResult();
         result.LimitUsed = options.MaxMarkersToDraw;
         
@@ -125,7 +132,8 @@ public class IntersectionService : IIntersectionService
                 {
                     result.MarkersToDraw.Add(KeyToPoint(key, options.StrideKey));
                 }
-                else if (options.FastMode)
+                
+                if (options.FastMode && carHits >= options.MaxMarkersToDraw)
                 {
                     result.StoppedEarly = true;
                     break;
@@ -165,7 +173,7 @@ public class IntersectionService : IIntersectionService
                 continue;
             }
 
-            // Fast-check: Segment vs AABB intersection (Cohen-Sutherland) + Clipping
+            // Fast-check: Segment vs AABB intersection (Liang-Barsky) + Clipping
             // This clips the line to the targetBox so we don't iterate pixels outside it.
             if (!GeometryUtils.GetClippedSegment(line, targetBox, out var clippedLine, padding: 2))
             {
@@ -189,7 +197,8 @@ public class IntersectionService : IIntersectionService
                     {
                         result.MarkersToDraw.Add(p);
                     }
-                    else if (options.FastMode)
+                    
+                    if (options.FastMode && (result.TotalHitsCars + lineHits) >= options.MaxMarkersToDraw)
                     {
                         result.StoppedEarly = true;
                         break; // break points loop

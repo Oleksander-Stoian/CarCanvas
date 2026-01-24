@@ -44,11 +44,6 @@ public static class GeometryUtils
         return false;
     }
 
-    public static bool SegmentIntersectsAabb(LineSegment line, Aabb box, int padding = 0)
-    {
-        return GetClippedSegment(line, box, out _, padding);
-    }
-
     private static bool ClipT(double p, double q, ref double t0, ref double t1)
     {
         if (Math.Abs(p) < 1e-9) // Parallel line (allowing for small epsilon)

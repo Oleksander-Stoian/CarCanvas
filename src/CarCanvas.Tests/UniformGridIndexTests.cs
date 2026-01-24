@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
+using CarCanvas.Infrastructure.Algorithms;
+
 namespace CarCanvas.Tests
 {
     public class UniformGridIndexTests
@@ -130,10 +132,10 @@ namespace CarCanvas.Tests
                  {
                      for(int c = startCol - 1; c <= endCol + 1; c++)
                      {
-                         if (UniformGridIndex.LiangBarskyIntersect(line, c*10, r*10, 10))
-                         {
-                             exactCells.Add((c, r));
-                         }
+                         if (GeometryUtils.GetClippedSegment(line, new Aabb(c * 10, c * 10 + 10, r * 10, r * 10 + 10), out _))
+                        {
+                            exactCells.Add((c, r));
+                        }
                      }
                  }
 
