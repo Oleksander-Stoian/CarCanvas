@@ -45,6 +45,7 @@ public class IntersectionService : IIntersectionService
     {
         var sw = Stopwatch.StartNew();
         var result = new IntersectionResult();
+        result.LimitUsed = options.MaxMarkersToDraw;
         
         // 1. Get PixelSets
         // BuildCarPixelSetMs - only if not cached. If cached, it's 0.
@@ -124,6 +125,11 @@ public class IntersectionService : IIntersectionService
                 {
                     result.MarkersToDraw.Add(KeyToPoint(key, options.StrideKey));
                 }
+                else if (options.FastMode)
+                {
+                    result.StoppedEarly = true;
+                    break;
+                }
             }
         }
         result.TotalHitsCars = carHits;
@@ -132,10 +138,14 @@ public class IntersectionService : IIntersectionService
         // For each line, bresenham -> check if point in targetPixels
         int lineHits = 0;
 
-        foreach (var index in candidates)
+        if (!result.StoppedEarly)
         {
-            if (index < 0 || index >= lines.Count) continue;
-            var line = lines[index];
+            foreach (var index in candidates)
+            {
+                if (result.StoppedEarly) break;
+                
+                if (index < 0 || index >= lines.Count) continue;
+                var line = lines[index];
 
             // Super-fast check: AABB vs AABB
             // Construct line AABB inline (O(1)) with 1px padding
@@ -179,8 +189,14 @@ public class IntersectionService : IIntersectionService
                     {
                         result.MarkersToDraw.Add(p);
                     }
+                    else if (options.FastMode)
+                    {
+                        result.StoppedEarly = true;
+                        break; // break points loop
+                    }
                 }
             }
+        }
         }
         result.TotalHitsLines = lineHits;
         

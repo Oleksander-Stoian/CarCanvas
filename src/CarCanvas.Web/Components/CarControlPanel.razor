@@ -39,6 +39,23 @@
                 * Rotation in degrees
             </div>
             
+            <div class="mb-2">
+                <div class="form-check form-check-inline small">
+                    <input class="form-check-input" type="radio" name="mode-@Car.Id" id="mode-fast-@Car.Id" 
+                           checked="@FastMode" @onchange="@(() => UpdateFastMode(true))">
+                    <label class="form-check-label" for="mode-fast-@Car.Id" title="Stop when limit reached">
+                        Fast Mode
+                    </label>
+                </div>
+                <div class="form-check form-check-inline small">
+                    <input class="form-check-input" type="radio" name="mode-@Car.Id" id="mode-full-@Car.Id" 
+                           checked="@(!FastMode)" @onchange="@(() => UpdateFastMode(false))">
+                    <label class="form-check-label" for="mode-full-@Car.Id" title="Calculate all intersections (may be slow)">
+                        Full Mode
+                    </label>
+                </div>
+            </div>
+
             <button class="btn btn-primary btn-sm w-100 mb-2" @onclick="OnShowIntersections" disabled="@IsBusy">
                 @if (IsBusy)
                 {
@@ -62,13 +79,30 @@
                         <hr class="my-1"/>
                         <div>Lines hits: @Result.TotalHitsLines</div>
                         <div>Cars hits: @Result.TotalHitsCars</div>
-                        <div>Total: @Result.TotalIntersections</div>
+                        <div>
+                            Total: 
+                            @if (Result.StoppedEarly)
+                            {
+                                <span class="badge bg-warning text-dark">@Result.LimitUsed+ (stopped early)</span>
+                            }
+                            else
+                            {
+                                <span>@Result.TotalIntersections</span>
+                            }
+                        </div>
                         
-                        @if (Result.TotalIntersections > Result.MarkersToDraw.Count)
+                        @if (Result.TotalIntersections > Result.MarkersToDraw.Count && !Result.StoppedEarly)
                         {
                              <div class="text-warning mt-1" style="font-weight: 600;">
                                 <i class="bi bi-exclamation-triangle"></i> 
                                 Showing first @Result.MarkersToDraw.Count of @Result.TotalIntersections intersections (increase limit to see more)
+                            </div>
+                        }
+                        else if (Result.StoppedEarly)
+                        {
+                            <div class="text-warning mt-1" style="font-weight: 600;">
+                                <i class="bi bi-exclamation-triangle"></i> 
+                                Stopped early at @Result.LimitUsed (Fast Mode)
                             </div>
                         }
 
@@ -102,8 +136,10 @@
     [Parameter] public CarCanvas.Application.DTOs.IntersectionResult? Result { get; set; }
     [Parameter] public bool IsBusy { get; set; }
     [Parameter] public bool ShowDebugStats { get; set; }
+    [Parameter] public bool FastMode { get; set; }
     [Parameter] public EventCallback<(int x, int y, double rot)> OnTransformChange { get; set; }
     [Parameter] public EventCallback OnFindIntersections { get; set; }
+    [Parameter] public EventCallback<bool> OnFastModeChange { get; set; }
 
     private async Task OnTransformChanged(string type, object? value)
     {
@@ -127,5 +163,10 @@
     private async Task OnShowIntersections()
     {
         await OnFindIntersections.InvokeAsync();
+    }
+
+    private async Task UpdateFastMode(bool isFast)
+    {
+        await OnFastModeChange.InvokeAsync(isFast);
     }
 }

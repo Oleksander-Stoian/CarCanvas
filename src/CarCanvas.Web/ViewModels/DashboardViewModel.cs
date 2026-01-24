@@ -39,6 +39,19 @@ public class DashboardViewModel
     
     public bool ShowDebug { get; set; } = false;
 
+    public bool FastMode 
+    { 
+        get => _options.FastMode; 
+        set 
+        {
+            if (_options.FastMode != value)
+            {
+                _options.FastMode = value;
+                NotifyStateChanged();
+            }
+        }
+    }
+
     public DashboardViewModel(
         ICarLoader carLoader, 
         ICarPointsParser pointsParser,

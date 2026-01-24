@@ -461,7 +461,7 @@
         }
       },
       {
-        "HashCode": 1884542085,
+        "HashCode": 1037931403,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.CarControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -519,6 +519,15 @@
           },
           {
             "Kind": "Components.Component",
+            "Name": "FastMode",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "FastMode",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
             "Name": "OnTransformChange",
             "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
             "Metadata": {
@@ -536,6 +545,16 @@
               "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback",
               "Components.EventCallback": "True"
             }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnFastModeChange",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean>",
+            "Metadata": {
+              "Common.PropertyName": "OnFastModeChange",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<global::System.Boolean>",
+              "Components.EventCallback": "True"
+            }
           }
         ],
         "Metadata": {
@@ -546,7 +565,7 @@
         }
       },
       {
-        "HashCode": 264818882,
+        "HashCode": 350087320,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.CarControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -604,6 +623,15 @@
           },
           {
             "Kind": "Components.Component",
+            "Name": "FastMode",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "FastMode",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
             "Name": "OnTransformChange",
             "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
             "Metadata": {
@@ -619,6 +647,16 @@
             "Metadata": {
               "Common.PropertyName": "OnFindIntersections",
               "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback",
+              "Components.EventCallback": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "OnFastModeChange",
+            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean>",
+            "Metadata": {
+              "Common.PropertyName": "OnFastModeChange",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.EventCallback<global::System.Boolean>",
               "Components.EventCallback": "True"
             }
           }
