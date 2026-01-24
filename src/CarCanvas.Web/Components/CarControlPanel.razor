@@ -72,15 +72,19 @@
                             </div>
                         }
 
-                        @if (ShowDebugStats)
-                        {
-                            <hr class="my-1"/>
                             <div class="text-muted" style="font-size: 0.8em;">
-                                <div>Rejected (Line AABB): @Result.RejectedByLineAabb</div>
-                                <div>Rejected (Seg AABB): @Result.RejectedBySegmentAabb</div>
-                                <div>Bresenham Calls: @Result.ProcessedByBresenham</div>
+                                <div>Build Car PixelSet: @(Result.BuildCarPixelSetMs > 0 ? $"{Result.BuildCarPixelSetMs} ms" : "cached")</div>
+                                <div>Grid query: @Result.GridQueryMs ms</div>
+                                <div>Narrow phase: @Result.NarrowPhaseMs ms</div>
+                                <div>Collect results: @Result.CollectResultsMs ms</div>
+                                @if (ShowDebugStats)
+                                {
+                                    <hr class="my-1"/>
+                                    <div>Rejected (Line AABB): @Result.RejectedByLineAabb</div>
+                                    <div>Rejected (Seg AABB): @Result.RejectedBySegmentAabb</div>
+                                    <div>Bresenham Calls: @Result.ProcessedByBresenham</div>
+                                }
                             </div>
-                        }
                     </small>
                 </div>
             }

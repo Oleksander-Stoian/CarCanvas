@@ -6,100 +6,68 @@ namespace CarCanvas.Infrastructure.Algorithms;
 
 public static class GeometryUtils
 {
-    private const int INSIDE = 0; // 0000
-    private const int LEFT = 1;   // 0001
-    private const int RIGHT = 2;  // 0010
-    private const int BOTTOM = 4; // 0100
-    private const int TOP = 8;    // 1000
+    public static bool GetClippedSegment(LineSegment line, Aabb box, out LineSegment clipped, int padding = 0)
+    {
+        clipped = default;
+
+        double xmin = box.MinX - padding;
+        double xmax = box.MaxX + padding;
+        double ymin = box.MinY - padding;
+        double ymax = box.MaxY + padding;
+
+        double x0 = line.Start.X;
+        double y0 = line.Start.Y;
+        double x1 = line.End.X;
+        double y1 = line.End.Y;
+
+        double dx = x1 - x0;
+        double dy = y1 - y0;
+
+        double t0 = 0.0;
+        double t1 = 1.0;
+
+        if (ClipT(-dx, x0 - xmin, ref t0, ref t1) &&  // Left
+            ClipT(dx, xmax - x0, ref t0, ref t1) &&   // Right
+            ClipT(-dy, y0 - ymin, ref t0, ref t1) &&  // Top
+            ClipT(dy, ymax - y0, ref t0, ref t1))     // Bottom
+        {
+            // Accepted
+            int newX0 = (int)Math.Round(x0 + t0 * dx);
+            int newY0 = (int)Math.Round(y0 + t0 * dy);
+            int newX1 = (int)Math.Round(x0 + t1 * dx);
+            int newY1 = (int)Math.Round(y0 + t1 * dy);
+
+            clipped = new LineSegment(new Point2D(newX0, newY0), new Point2D(newX1, newY1));
+            return true;
+        }
+
+        return false;
+    }
 
     public static bool SegmentIntersectsAabb(LineSegment line, Aabb box, int padding = 0)
     {
-        int xmin = box.MinX - padding;
-        int xmax = box.MaxX + padding;
-        int ymin = box.MinY - padding;
-        int ymax = box.MaxY + padding;
-
-        int x0 = line.Start.X;
-        int y0 = line.Start.Y;
-        int x1 = line.End.X;
-        int y1 = line.End.Y;
-
-        int outcode0 = ComputeOutCode(x0, y0, xmin, xmax, ymin, ymax);
-        int outcode1 = ComputeOutCode(x1, y1, xmin, xmax, ymin, ymax);
-
-        bool accept = false;
-
-        while (true)
-        {
-            if ((outcode0 | outcode1) == 0)
-            {
-                // Both points inside
-                accept = true;
-                break;
-            }
-            else if ((outcode0 & outcode1) != 0)
-            {
-                // Both are outside the same zone (e.g. both left of rect)
-                break;
-            }
-            else
-            {
-                // Some segment is inside
-                // Pick an outside point
-                int outcodeOut = outcode0 != 0 ? outcode0 : outcode1;
-                double x = 0, y = 0;
-
-                // Find intersection point
-                if ((outcodeOut & TOP) != 0)
-                {
-                    x = x0 + (x1 - x0) * (ymax - y0) / (double)(y1 - y0);
-                    y = ymax;
-                }
-                else if ((outcodeOut & BOTTOM) != 0)
-                {
-                    x = x0 + (x1 - x0) * (ymin - y0) / (double)(y1 - y0);
-                    y = ymin;
-                }
-                else if ((outcodeOut & RIGHT) != 0)
-                {
-                    y = y0 + (y1 - y0) * (xmax - x0) / (double)(x1 - x0);
-                    x = xmax;
-                }
-                else if ((outcodeOut & LEFT) != 0)
-                {
-                    y = y0 + (y1 - y0) * (xmin - x0) / (double)(x1 - x0);
-                    x = xmin;
-                }
-
-                // Move outside point to intersection point
-                if (outcodeOut == outcode0)
-                {
-                    x0 = (int)x;
-                    y0 = (int)y;
-                    outcode0 = ComputeOutCode(x0, y0, xmin, xmax, ymin, ymax);
-                }
-                else
-                {
-                    x1 = (int)x;
-                    y1 = (int)y;
-                    outcode1 = ComputeOutCode(x1, y1, xmin, xmax, ymin, ymax);
-                }
-            }
-        }
-
-        return accept;
+        return GetClippedSegment(line, box, out _, padding);
     }
 
-    private static int ComputeOutCode(int x, int y, int xmin, int xmax, int ymin, int ymax)
+    private static bool ClipT(double p, double q, ref double t0, ref double t1)
     {
-        int code = INSIDE;
+        if (Math.Abs(p) < 1e-9) // Parallel line (allowing for small epsilon)
+        {
+            if (q < 0) return false; // Outside
+            return true; // Inside or on boundary
+        }
 
-        if (x < xmin) code |= LEFT;
-        else if (x > xmax) code |= RIGHT;
-
-        if (y < ymin) code |= BOTTOM;
-        else if (y > ymax) code |= TOP;
-
-        return code;
+        double r = q / p;
+        if (p < 0)
+        {
+            if (r > t1) return false;
+            if (r > t0) t0 = r;
+        }
+        else // p > 0
+        {
+            if (r < t0) return false;
+            if (r < t1) t1 = r;
+        }
+        return true;
     }
 }

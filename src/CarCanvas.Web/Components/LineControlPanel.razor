@@ -50,7 +50,7 @@
     public int? EndX { get; set; }
     public int? EndY { get; set; }
     
-    public int GenerateCount { get; set; } = 100;
+    public int? GenerateCount { get; set; } = 100;
 
     [Parameter] public int TotalLines { get; set; }
     [Parameter] public bool ShowDebug { get; set; }
@@ -64,13 +64,20 @@
         if (StartX.HasValue && StartY.HasValue && EndX.HasValue && EndY.HasValue)
         {
             await OnAddLine.InvokeAsync((StartX.Value, StartY.Value, EndX.Value, EndY.Value));
-            // Optional: clear after add? Or keep for repeat? Keeping is usually better.
+            StartX = null;
+            StartY = null;
+            EndX = null;
+            EndY = null;
         }
     }
 
     private async Task Generate()
     {
-        await OnGenerate.InvokeAsync(GenerateCount);
+        if (GenerateCount.HasValue)
+        {
+            await OnGenerate.InvokeAsync(GenerateCount.Value);
+            GenerateCount = null;
+        }
     }
 
     private async Task Clear()

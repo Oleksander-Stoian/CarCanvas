@@ -17,7 +17,17 @@ public class IntersectionResult
     public int RejectedBySegmentAabb { get; set; }
     public int ProcessedByBresenham { get; set; }
 
+    // Profiling Stats
+    public long BuildCarPixelSetMs { get; set; }
+    public long GridQueryMs { get; set; }
+    public long NarrowPhaseMs { get; set; }
+    public long CollectResultsMs { get; set; }
+
     // Debug AABBs
     public Aabb? TargetCarAabb { get; set; }
     public Aabb? OtherCarAabb { get; set; }
+
+    // Optimization Stats
+    public bool StoppedEarly { get; set; }
+    public int LimitUsed { get; set; }
 }
