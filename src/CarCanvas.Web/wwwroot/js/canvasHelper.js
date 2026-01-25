@@ -212,5 +212,57 @@ window.canvasHelper = {
         this.ctx.strokeStyle = color;
         this.ctx.lineWidth = 1;
         this.ctx.strokeRect(x, y, w, h);
+    },
+
+    drawRuler: function (x1, y1, x2, y2, label) {
+        if (!this.ctx) return;
+        
+        this.ctx.save();
+        
+        // 1. Line style
+        this.ctx.strokeStyle = '#e67e22'; // Orange color for visibility
+        this.ctx.lineWidth = 2;
+        this.ctx.setLineDash([5, 5]); // Dashed line
+        
+        // 2. Draw line
+        this.ctx.beginPath();
+        this.ctx.moveTo(x1, y1);
+        this.ctx.lineTo(x2, y2);
+        this.ctx.stroke();
+        
+        // 3. Draw endpoints
+        this.ctx.setLineDash([]); // Reset dash
+        this.ctx.fillStyle = '#d35400';
+        
+        // Start point
+        this.ctx.beginPath();
+        this.ctx.arc(x1, y1, 4, 0, 2 * Math.PI);
+        this.ctx.fill();
+        
+        // End point
+        this.ctx.beginPath();
+        this.ctx.arc(x2, y2, 4, 0, 2 * Math.PI);
+        this.ctx.fill();
+        
+        // 4. Draw label (distance)
+        if (label) {
+            const midX = (x1 + x2) / 2;
+            const midY = (y1 + y2) / 2;
+            
+            this.ctx.font = 'bold 14px sans-serif';
+            this.ctx.fillStyle = '#d35400';
+            this.ctx.textAlign = 'center';
+            this.ctx.textBaseline = 'bottom';
+            
+            // Add background for text readability
+            const textWidth = this.ctx.measureText(label).width;
+            this.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            this.ctx.fillRect(midX - textWidth/2 - 2, midY - 20, textWidth + 4, 20);
+            
+            this.ctx.fillStyle = '#d35400';
+            this.ctx.fillText(label, midX, midY - 5);
+        }
+        
+        this.ctx.restore();
     }
 };

@@ -66,6 +66,48 @@
         <!-- Section: Data / Config -->
         <h5 class="section-header border-bottom pb-2 mb-3">Data / Config</h5>
         <div class="d-flex flex-column gap-3 mb-4">
+            
+            <!-- Tools Section -->
+            <div class="card-modern">
+                <div class="card-header-modern">Tools</div>
+                <div class="card-body p-3">
+                    <label class="form-label fw-bold small">Ruler (Measure)</label>
+                    <div class="d-flex gap-2 mb-2">
+                         <button class="btn btn-sm @(ViewModel.IsRulerMode ? "btn-warning" : "btn-outline-secondary") flex-grow-1" 
+                                @onclick="() => ViewModel.ToggleRulerMode()">
+                            <i class="bi bi-rulers"></i> @(ViewModel.IsRulerMode ? "Active" : "Ruler Mode")
+                        </button>
+                        @if (ViewModel.IsRulerMode)
+                        {
+                            <button class="btn btn-sm btn-outline-danger" @onclick="() => ViewModel.ClearRuler()" title="Clear Ruler">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        }
+                    </div>
+                    
+                    @if (ViewModel.IsRulerMode)
+                    {
+                        <div class="alert alert-warning p-2 mb-0 small">
+                            @if (ViewModel.RulerStart == null)
+                            {
+                                <div>Click to set <strong>Start Point</strong></div>
+                            }
+                            else if (ViewModel.RulerEnd == null)
+                            {
+                                <div>Click to set <strong>End Point</strong></div>
+                            }
+                            else
+                            {
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Distance:</span>
+                                    <strong style="font-size: 1.1em;">@($"{ViewModel.RulerDistance:F1}") cm</strong>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+
             <div class="card-modern">
                 <div class="card-body p-3">
                     <label class="form-label fw-bold small">Coordinate System</label>

@@ -1,5 +1,7 @@
 @inject CarCanvas.Application.Interfaces.ICanvasSceneService CanvasService
 @inject ILogger<CanvasView> CanvasLogger
+@inject DashboardViewModel ViewModel
+@using CarCanvas.Web.ViewModels
 @using Microsoft.Extensions.Logging
 @using CarCanvas.Application.Enums
 
@@ -7,7 +9,8 @@
     <canvas id="@Id" width="@Width" height="@Height" 
             style="border: 1px solid #ccc; background-color: #f8f9fa; cursor: url('data:image/svg+xml;utf8,<svg width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 xmlns=%22http://www.w3.org/2000/svg%22><path d=%22M12 1v22M1 12h22%22 stroke=%22red%22 stroke-width=%222%22/></svg>') 12 12, crosshair;"
             @onmousemove="HandleMouseMove"
-            @onmouseout="() => _showCoords = false"></canvas>
+            @onmouseout="() => _showCoords = false"
+            @onclick="HandleClick"></canvas>
 
     @if (_showCoords)
     {
@@ -42,6 +45,24 @@
         }
         
         _showCoords = true;
+    }
+
+    private async Task HandleClick(MouseEventArgs e)
+    {
+        double x = e.OffsetX;
+        double y;
+        
+        // Transform coordinates for ViewModel
+        if (Mode == CoordinateMode.MathYUp)
+        {
+            y = Height - e.OffsetY;
+        }
+        else
+        {
+            y = e.OffsetY;
+        }
+
+        await ViewModel.HandleCanvasClick(x, y);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

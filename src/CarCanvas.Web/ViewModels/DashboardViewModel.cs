@@ -87,6 +87,70 @@ public class DashboardViewModel
         NotifyStateChanged();
     }
 
+    #region Ruler Mode
+    public bool IsRulerMode { get; private set; }
+    public Point2D? RulerStart { get; private set; }
+    public Point2D? RulerEnd { get; private set; }
+    public double? RulerDistance { get; private set; }
+
+    public void ToggleRulerMode()
+    {
+        IsRulerMode = !IsRulerMode;
+        if (!IsRulerMode)
+        {
+            ClearRuler();
+        }
+        NotifyStateChanged();
+    }
+
+    public void ClearRuler()
+    {
+        RulerStart = null;
+        RulerEnd = null;
+        RulerDistance = null;
+        NotifyStateChanged();
+        _ = DrawSceneAsync();
+    }
+
+    public async Task HandleCanvasClick(double x, double y)
+    {
+        if (!IsRulerMode) return;
+
+        // Round to 1 decimal place for cleaner values
+        x = Math.Round(x, 1);
+        y = Math.Round(y, 1);
+        var p = new Point2D((int)x, (int)y);
+
+        if (RulerStart == null)
+        {
+            // First click
+            RulerStart = p;
+            RulerEnd = null;
+            RulerDistance = null;
+        }
+        else if (RulerEnd == null)
+        {
+            // Second click
+            RulerEnd = p;
+            
+            // Calculate distance
+            double dx = RulerEnd.Value.X - RulerStart.Value.X;
+            double dy = RulerEnd.Value.Y - RulerStart.Value.Y;
+            RulerDistance = Math.Sqrt(dx * dx + dy * dy);
+        }
+        else
+        {
+            // Start over
+            RulerStart = p;
+            RulerEnd = null;
+            RulerDistance = null;
+        }
+
+        await DrawSceneAsync();
+        NotifyStateChanged();
+    }
+    #endregion
+
     public void UpdateMarkersLimit(int limit)
     {
         _options.MaxMarkersToDraw = limit;
@@ -199,14 +263,31 @@ public class DashboardViewModel
 
     public async Task UpdateTransformAsync(int carId, int tx, int ty, double rot)
     {
-        var car = carId == 1 ? Car1 : Car2;
-        if (car != null)
+        if (carId == 1 && Car1 != null)
         {
-            car.Transform.TranslateX = tx;
-            car.Transform.TranslateY = ty;
-            car.Transform.RotationAngle = rot;
-            await DrawSceneAsync();
+            Car1.Transform.TranslateX = tx;
+            Car1.Transform.TranslateY = ty;
+            Car1.Transform.RotationAngle = rot;
+            
+            // Invalidate cache
+            _intersectionService.InvalidateCache();
         }
+        else if (carId == 2 && Car2 != null)
+        {
+            Car2.Transform.TranslateX = tx;
+            Car2.Transform.TranslateY = ty;
+            Car2.Transform.RotationAngle = rot;
+            
+            // Invalidate cache
+            _intersectionService.InvalidateCache();
+        }
+
+        // Invalidate results
+        ResultCar1 = null;
+        ResultCar2 = null;
+
+        await DrawSceneAsync();
+        NotifyStateChanged();
     }
 
     public async Task AddLineAsync(int x1, int y1, int x2, int y2)
@@ -332,6 +413,23 @@ public class DashboardViewModel
         if (ResultCar1 != null) await _canvasService.DrawMarkersAsync(ResultCar1.MarkersToDraw);
         if (ResultCar2 != null) await _canvasService.DrawMarkersAsync(ResultCar2.MarkersToDraw);
 
+        // Draw Ruler
+        if (IsRulerMode && RulerStart != null)
+        {
+            if (RulerEnd != null)
+            {
+                var distStr = $"{RulerDistance:F1} cm";
+                var p1 = TransformPointForDraw(RulerStart.Value);
+                var p2 = TransformPointForDraw(RulerEnd.Value);
+                await _canvasService.DrawRulerAsync(p1, p2, distStr);
+            }
+            else
+            {
+                var p1 = TransformPointForDraw(RulerStart.Value);
+                await _canvasService.DrawRulerAsync(p1, p1, "Start");
+            }
+        }
+
         if (ShowDebug)
         {
             if (ResultCar1?.TargetCarAabb.HasValue == true)
@@ -352,6 +450,16 @@ public class DashboardViewModel
         ShowDebug = isDebug;
         await DrawSceneAsync();
         NotifyStateChanged();
+    }
+
+    private Point2D TransformPointForDraw(Point2D p)
+    {
+        // If MathYUp, we need to flip Y for drawing on HTML Canvas (where 0 is top)
+        if (CoordinateMode == CoordinateMode.MathYUp)
+        {
+            return new Point2D(p.X, _options.CanvasHeight - p.Y);
+        }
+        return p;
     }
 
     private void NotifyStateChanged() => OnChange?.Invoke();

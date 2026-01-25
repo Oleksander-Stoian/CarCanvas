@@ -64,4 +64,9 @@ public class CanvasSceneService : ICanvasSceneService
     {
         await _js.InvokeVoidAsync("canvasHelper.drawRect", x, y, w, h, color);
     }
+
+    public async Task DrawRulerAsync(Point2D start, Point2D end, string label)
+    {
+        await _js.InvokeVoidAsync("canvasHelper.drawRuler", start.X, start.Y, end.X, end.Y, label);
+    }
 }
