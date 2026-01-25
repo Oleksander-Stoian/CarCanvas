@@ -5567,11 +5567,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
+      "projectUniqueName": "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
       "projectName": "CarCanvas.Tests",
-      "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
+      "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\obj\\",
+      "outputPath": "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -5586,14 +5586,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj": {
-              "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj"
+            "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj": {
+              "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj"
             },
-            "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj": {
-              "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj"
+            "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj": {
+              "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj"
             },
-            "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj": {
-              "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj"
+            "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj": {
+              "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj"
             }
           }
         }

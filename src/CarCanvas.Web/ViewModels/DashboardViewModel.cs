@@ -357,7 +357,9 @@ public class DashboardViewModel
         var target = carId == 1 ? Car1 : Car2;
         var other = carId == 1 ? Car2 : Car1;
 
-        var result = await _intersectionService.FindIntersectionsAsync(target, other, Lines, _options, _gridIndex);
+        // Offload to background thread here (in ViewModel)
+        // This ensures UI doesn't freeze, but Service logic is synchronous/pure
+        var result = await Task.Run(() => _intersectionService.FindIntersections(target, other, Lines, _options, _gridIndex));
 
         if (carId == 1) ResultCar1 = result;
         else ResultCar2 = result;

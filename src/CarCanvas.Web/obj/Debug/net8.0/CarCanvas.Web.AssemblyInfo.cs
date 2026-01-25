@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarCanvas.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4455705fc07091d5aa233b705a88913bddf3457")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa77d43c29acb0ac18041a508b369846e76558f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarCanvas.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarCanvas.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

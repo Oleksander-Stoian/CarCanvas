@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Oa/3H5AQrrQ=",
+  "dgSpecHash": "WU9Itz5QPmI=",
   "success": true,
-  "projectFilePath": "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
+  "projectFilePath": "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",

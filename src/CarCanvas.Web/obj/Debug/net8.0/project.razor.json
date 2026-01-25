@@ -9,38 +9,296 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 292918228,
+        "HashCode": 701615418,
         "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.App",
+        "Name": "CarCanvas.Web.Pages.Home",
         "AssemblyName": "CarCanvas.Web",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App"
+            "TagName": "Home"
           }
         ],
         "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.App",
-          "Common.TypeNameIdentifier": "App",
-          "Common.TypeNamespace": "CarCanvas.Web",
+          "Common.TypeName": "CarCanvas.Web.Pages.Home",
+          "Common.TypeNameIdentifier": "Home",
+          "Common.TypeNamespace": "CarCanvas.Web.Pages",
           "Runtime.Name": "Components.IComponent"
         }
       },
       {
-        "HashCode": -352108847,
+        "HashCode": -157184487,
         "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.App",
+        "Name": "CarCanvas.Web.Pages.Home",
         "AssemblyName": "CarCanvas.Web",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "CarCanvas.Web.App"
+            "TagName": "CarCanvas.Web.Pages.Home"
           }
         ],
         "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.App",
-          "Common.TypeNameIdentifier": "App",
-          "Common.TypeNamespace": "CarCanvas.Web",
+          "Common.TypeName": "CarCanvas.Web.Pages.Home",
+          "Common.TypeNameIdentifier": "Home",
+          "Common.TypeNamespace": "CarCanvas.Web.Pages",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 976362323,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Layout.MainLayout",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "MainLayout"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Body",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+            "Metadata": {
+              "Common.PropertyName": "Body",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.RenderFragment",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout",
+          "Common.TypeNameIdentifier": "MainLayout",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 401856279,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Layout.MainLayout",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CarCanvas.Web.Layout.MainLayout"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Body",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+            "Metadata": {
+              "Common.PropertyName": "Body",
+              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.RenderFragment",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout",
+          "Common.TypeNameIdentifier": "MainLayout",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 101330352,
+        "Kind": "Components.ChildContent",
+        "Name": "CarCanvas.Web.Layout.MainLayout.Body",
+        "AssemblyName": "CarCanvas.Web",
+        "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Body",
+            "ParentTag": "MainLayout"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout.Body",
+          "Common.TypeNameIdentifier": "MainLayout",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Components.IsSpecialKind": "Components.ChildContent",
+          "Runtime.Name": "Components.None"
+        }
+      },
+      {
+        "HashCode": 1877275564,
+        "Kind": "Components.ChildContent",
+        "Name": "CarCanvas.Web.Layout.MainLayout.Body",
+        "AssemblyName": "CarCanvas.Web",
+        "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Body",
+            "ParentTag": "CarCanvas.Web.Layout.MainLayout"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout.Body",
+          "Common.TypeNameIdentifier": "MainLayout",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Components.IsSpecialKind": "Components.ChildContent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.None"
+        }
+      },
+      {
+        "HashCode": 904642436,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Layout.NavMenu",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.NavMenu",
+          "Common.TypeNameIdentifier": "NavMenu",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": 2079762369,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Layout.NavMenu",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CarCanvas.Web.Layout.NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Layout.NavMenu",
+          "Common.TypeNameIdentifier": "NavMenu",
+          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": -1999055095,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Components.CanvasView",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CanvasView"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.String"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Width",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Width",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Height",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Height",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Mode",
+            "TypeName": "CarCanvas.Application.Enums.CoordinateMode",
+            "IsEnum": true,
+            "Metadata": {
+              "Common.PropertyName": "Mode",
+              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.Enums.CoordinateMode"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Components.CanvasView",
+          "Common.TypeNameIdentifier": "CanvasView",
+          "Common.TypeNamespace": "CarCanvas.Web.Components",
+          "Runtime.Name": "Components.IComponent"
+        }
+      },
+      {
+        "HashCode": -1081229616,
+        "Kind": "Components.Component",
+        "Name": "CarCanvas.Web.Components.CanvasView",
+        "AssemblyName": "CarCanvas.Web",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CarCanvas.Web.Components.CanvasView"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Id",
+              "Common.GloballyQualifiedTypeName": "global::System.String"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Width",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Width",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Height",
+            "TypeName": "System.Int32",
+            "Metadata": {
+              "Common.PropertyName": "Height",
+              "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Mode",
+            "TypeName": "CarCanvas.Application.Enums.CoordinateMode",
+            "IsEnum": true,
+            "Metadata": {
+              "Common.PropertyName": "Mode",
+              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.Enums.CoordinateMode"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "CarCanvas.Web.Components.CanvasView",
+          "Common.TypeNameIdentifier": "CanvasView",
+          "Common.TypeNamespace": "CarCanvas.Web.Components",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch",
           "Runtime.Name": "Components.IComponent"
         }
@@ -412,296 +670,38 @@
         }
       },
       {
-        "HashCode": -1999055095,
+        "HashCode": 292918228,
         "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Components.CanvasView",
+        "Name": "CarCanvas.Web.App",
         "AssemblyName": "CarCanvas.Web",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "CanvasView"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Id",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Id",
-              "Common.GloballyQualifiedTypeName": "global::System.String"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Width",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Width",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Height",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Height",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Mode",
-            "TypeName": "CarCanvas.Application.Enums.CoordinateMode",
-            "IsEnum": true,
-            "Metadata": {
-              "Common.PropertyName": "Mode",
-              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.Enums.CoordinateMode"
-            }
+            "TagName": "App"
           }
         ],
         "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Components.CanvasView",
-          "Common.TypeNameIdentifier": "CanvasView",
-          "Common.TypeNamespace": "CarCanvas.Web.Components",
+          "Common.TypeName": "CarCanvas.Web.App",
+          "Common.TypeNameIdentifier": "App",
+          "Common.TypeNamespace": "CarCanvas.Web",
           "Runtime.Name": "Components.IComponent"
         }
       },
       {
-        "HashCode": -1081229616,
+        "HashCode": -352108847,
         "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Components.CanvasView",
+        "Name": "CarCanvas.Web.App",
         "AssemblyName": "CarCanvas.Web",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "CarCanvas.Web.Components.CanvasView"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Id",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Id",
-              "Common.GloballyQualifiedTypeName": "global::System.String"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Width",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Width",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Height",
-            "TypeName": "System.Int32",
-            "Metadata": {
-              "Common.PropertyName": "Height",
-              "Common.GloballyQualifiedTypeName": "global::System.Int32"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Mode",
-            "TypeName": "CarCanvas.Application.Enums.CoordinateMode",
-            "IsEnum": true,
-            "Metadata": {
-              "Common.PropertyName": "Mode",
-              "Common.GloballyQualifiedTypeName": "global::CarCanvas.Application.Enums.CoordinateMode"
-            }
+            "TagName": "CarCanvas.Web.App"
           }
         ],
         "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Components.CanvasView",
-          "Common.TypeNameIdentifier": "CanvasView",
-          "Common.TypeNamespace": "CarCanvas.Web.Components",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 701615418,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Pages.Home",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Home"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Pages.Home",
-          "Common.TypeNameIdentifier": "Home",
-          "Common.TypeNamespace": "CarCanvas.Web.Pages",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": -157184487,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Pages.Home",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.Pages.Home"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Pages.Home",
-          "Common.TypeNameIdentifier": "Home",
-          "Common.TypeNamespace": "CarCanvas.Web.Pages",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 976362323,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Layout.MainLayout",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "MainLayout"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Body",
-            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
-            "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
-            "Metadata": {
-              "Common.PropertyName": "Body",
-              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.RenderFragment",
-              "Components.ChildContent": "True"
-            }
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout",
-          "Common.TypeNameIdentifier": "MainLayout",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 401856279,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Layout.MainLayout",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.Layout.MainLayout"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Body",
-            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
-            "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
-            "Metadata": {
-              "Common.PropertyName": "Body",
-              "Common.GloballyQualifiedTypeName": "global::Microsoft.AspNetCore.Components.RenderFragment",
-              "Components.ChildContent": "True"
-            }
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout",
-          "Common.TypeNameIdentifier": "MainLayout",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 101330352,
-        "Kind": "Components.ChildContent",
-        "Name": "CarCanvas.Web.Layout.MainLayout.Body",
-        "AssemblyName": "CarCanvas.Web",
-        "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Body",
-            "ParentTag": "MainLayout"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout.Body",
-          "Common.TypeNameIdentifier": "MainLayout",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Components.IsSpecialKind": "Components.ChildContent",
-          "Runtime.Name": "Components.None"
-        }
-      },
-      {
-        "HashCode": 1877275564,
-        "Kind": "Components.ChildContent",
-        "Name": "CarCanvas.Web.Layout.MainLayout.Body",
-        "AssemblyName": "CarCanvas.Web",
-        "Documentation": "<member name=\"P:Microsoft.AspNetCore.Components.LayoutComponentBase.Body\">\r\n            <summary>\r\n            Gets the content to be rendered inside the layout.\r\n            </summary>\r\n        </member>",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Body",
-            "ParentTag": "CarCanvas.Web.Layout.MainLayout"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.MainLayout.Body",
-          "Common.TypeNameIdentifier": "MainLayout",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch",
-          "Runtime.Name": "Components.None"
-        }
-      },
-      {
-        "HashCode": 904642436,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Layout.NavMenu",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.NavMenu",
-          "Common.TypeNameIdentifier": "NavMenu",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
-          "Runtime.Name": "Components.IComponent"
-        }
-      },
-      {
-        "HashCode": 2079762369,
-        "Kind": "Components.Component",
-        "Name": "CarCanvas.Web.Layout.NavMenu",
-        "AssemblyName": "CarCanvas.Web",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CarCanvas.Web.Layout.NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Common.TypeName": "CarCanvas.Web.Layout.NavMenu",
-          "Common.TypeNameIdentifier": "NavMenu",
-          "Common.TypeNamespace": "CarCanvas.Web.Layout",
+          "Common.TypeName": "CarCanvas.Web.App",
+          "Common.TypeNameIdentifier": "App",
+          "Common.TypeNamespace": "CarCanvas.Web",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch",
           "Runtime.Name": "Components.IComponent"
         }
