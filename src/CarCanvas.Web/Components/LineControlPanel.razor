@@ -53,6 +53,7 @@
     public int? GenerateCount { get; set; } = 100;
 
     [Parameter] public int TotalLines { get; set; }
+    [Parameter] public long GridBuildMs { get; set; }
     [Parameter] public bool ShowDebug { get; set; }
     [Parameter] public EventCallback<(int x1, int y1, int x2, int y2)> OnAddLine { get; set; }
     [Parameter] public EventCallback<int> OnGenerate { get; set; }

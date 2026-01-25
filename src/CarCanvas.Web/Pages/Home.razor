@@ -37,6 +37,8 @@
                                 IsBusy="ViewModel.IsLoading"
                                 ShowDebugStats="ViewModel.ShowDebug"
                                 FastMode="ViewModel.FastMode"
+                                RenderMs="ViewModel.LastRenderMs"
+                                IsRenderSimplified="ViewModel.IsRenderSimplified"
                                 OnFastModeChange="@((val) => ViewModel.FastMode = val)"
                                 OnTransformChange="@(t => ViewModel.UpdateTransformAsync(1, t.x, t.y, t.rot))"
                                 OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(1))" />
@@ -47,6 +49,8 @@
                                 IsBusy="ViewModel.IsLoading"
                                 ShowDebugStats="ViewModel.ShowDebug"
                                 FastMode="ViewModel.FastMode"
+                                RenderMs="ViewModel.LastRenderMs"
+                                IsRenderSimplified="ViewModel.IsRenderSimplified"
                                 OnFastModeChange="@((val) => ViewModel.FastMode = val)"
                                 OnTransformChange="@(t => ViewModel.UpdateTransformAsync(2, t.x, t.y, t.rot))"
                                 OnFindIntersections="@(() => ViewModel.FindIntersectionsAsync(2))" />
@@ -56,6 +60,7 @@
         <h5 class="section-header border-bottom pb-2 mb-3">Lines</h5>
         <div class="mb-4">
             <LineControlPanel TotalLines="ViewModel.Lines.Count"
+                                GridBuildMs="ViewModel.LastGridBuildMs"
                                 ShowDebug="ViewModel.ShowDebug"
                                 OnAddLine="@(l => ViewModel.AddLineAsync(l.x1, l.y1, l.x2, l.y2))"
                                 OnGenerate="@(n => ViewModel.GenerateRandomLinesAsync(n))"

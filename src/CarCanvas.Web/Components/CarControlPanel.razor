@@ -137,6 +137,8 @@
     [Parameter] public bool IsBusy { get; set; }
     [Parameter] public bool ShowDebugStats { get; set; }
     [Parameter] public bool FastMode { get; set; }
+    [Parameter] public long RenderMs { get; set; }
+    [Parameter] public bool IsRenderSimplified { get; set; }
     [Parameter] public EventCallback<(int x, int y, double rot)> OnTransformChange { get; set; }
     [Parameter] public EventCallback OnFindIntersections { get; set; }
     [Parameter] public EventCallback<bool> OnFastModeChange { get; set; }

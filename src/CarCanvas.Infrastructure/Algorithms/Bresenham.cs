@@ -63,7 +63,8 @@ public static class Bresenham
         int maxHitsToCollect,
         List<Point2D>? markers,
         int stopEarlyAt = -1,
-        int currentTotalHits = 0)
+        int currentTotalHits = 0,
+        System.Threading.CancellationToken ct = default)
     {
         int x0 = p1.X;
         int y0 = p1.Y;
@@ -78,9 +79,17 @@ public static class Bresenham
 
         int hits = 0;
         bool checkBounds = true; // Optimization: we could skip if we know line is clipped inside, but safe default is true.
+        int stepCount = 0;
 
         while (true)
         {
+            // Check cancellation every 50 steps to avoid overhead
+            stepCount++;
+            if (stepCount % 50 == 0)
+            {
+                ct.ThrowIfCancellationRequested();
+            }
+
             // Check Point
             if (checkBounds)
             {

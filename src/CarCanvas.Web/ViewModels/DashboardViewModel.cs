@@ -20,6 +20,7 @@ public class DashboardViewModel
     private readonly ICanvasSceneService _canvasService;
     private readonly AppOptions _options;
     private UniformGridIndex? _gridIndex;
+    private System.Threading.CancellationTokenSource? _cts;
 
     public event Action? OnChange;
 
@@ -31,6 +32,11 @@ public class DashboardViewModel
 
     public IntersectionResult? ResultCar1 { get; private set; }
     public IntersectionResult? ResultCar2 { get; private set; }
+
+    // Telemetry
+    public long LastGridBuildMs { get; private set; }
+    public long LastRenderMs { get; private set; }
+    public bool IsRenderSimplified { get; private set; }
 
     public bool IsLoading { get; private set; }
     public string? ErrorMessage { get; private set; }
@@ -324,14 +330,24 @@ public class DashboardViewModel
             var p2 = new Point2D(rnd.Next(0, _options.CanvasWidth), rnd.Next(0, _options.CanvasHeight));
             var line = new LineSegment(p1, p2);
             newLines.Add(line);
-            _gridIndex?.Add(line, startIndex + i);
         }
+
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+        if (_gridIndex != null)
+        {
+            for (int i = 0; i < newLines.Count; i++)
+            {
+                _gridIndex.Add(newLines[i], startIndex + i);
+            }
+        }
+        sw.Stop();
+        LastGridBuildMs = sw.ElapsedMilliseconds;
 
         Lines.AddRange(newLines);
         // Optimize: draw only new lines?
         // But for simplicity and layering, we might redraw everything or just new lines.
         // Let's draw batch.
-        await _canvasService.DrawLinesAsync(newLines);
+        await DrawSceneAsync(); // Use central method to handle render budget
         NotifyStateChanged();
     }
 
@@ -348,6 +364,11 @@ public class DashboardViewModel
     {
         if (Car1 == null || Car2 == null) return;
 
+        // Cancel previous if any (though usually user waits)
+        _cts?.Cancel();
+        _cts = new System.Threading.CancellationTokenSource();
+        var token = _cts.Token;
+
         IsLoading = true;
         NotifyStateChanged();
         
@@ -357,34 +378,63 @@ public class DashboardViewModel
         var target = carId == 1 ? Car1 : Car2;
         var other = carId == 1 ? Car2 : Car1;
 
-        // Offload to background thread here (in ViewModel)
-        // This ensures UI doesn't freeze, but Service logic is synchronous/pure
-        var result = await Task.Run(() => _intersectionService.FindIntersections(target, other, Lines, _options, _gridIndex));
+        try 
+        {
+            // Offload to background thread here (in ViewModel)
+            // This ensures UI doesn't freeze, but Service logic is synchronous/pure
+            var result = await Task.Run(() => _intersectionService.FindIntersections(target, other, Lines, _options, _gridIndex, token), token);
 
-        if (carId == 1) ResultCar1 = result;
-        else ResultCar2 = result;
+            if (carId == 1) ResultCar1 = result;
+            else ResultCar2 = result;
 
-        // Draw markers
-        // Clear previous markers? Usually "Clear scene" clears markers. 
-        // But "Find Intersection" might want to clear previous markers first.
-        // Let's redraw scene + markers.
-        await DrawSceneAsync();
-        
-        // Draw new markers
-        await _canvasService.DrawMarkersAsync(result.MarkersToDraw);
-
-        IsLoading = false;
-        NotifyStateChanged();
+            // Draw markers
+            // Clear previous markers? Usually "Clear scene" clears markers. 
+            // But "Find Intersection" might want to clear previous markers first.
+            // Let's redraw scene + markers.
+            await DrawSceneAsync();
+            
+            // Draw new markers
+            await _canvasService.DrawMarkersAsync(result.MarkersToDraw);
+        }
+        catch (TaskCanceledException)
+        {
+            // Cancelled
+        }
+        finally
+        {
+            IsLoading = false;
+            NotifyStateChanged();
+        }
     }
 
     private async Task DrawSceneAsync()
     {
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+
         await _canvasService.ClearAsync();
         
-        // Draw Lines
+        // Draw Lines with Render Budget
         if (Lines.Any())
         {
-            await _canvasService.DrawLinesAsync(Lines);
+            if (Lines.Count > 50000)
+            {
+                IsRenderSimplified = true;
+                // Simplified: draw every Nth line
+                int step = Lines.Count / 20000; // Aim for ~20k lines max
+                if (step < 1) step = 1;
+                
+                var simplifiedLines = Lines.Where((l, i) => i % step == 0);
+                await _canvasService.DrawLinesAsync(simplifiedLines);
+            }
+            else
+            {
+                IsRenderSimplified = false;
+                await _canvasService.DrawLinesAsync(Lines);
+            }
+        }
+        else
+        {
+            IsRenderSimplified = false;
         }
 
         // Draw Cars
@@ -445,6 +495,9 @@ public class DashboardViewModel
                 await _canvasService.DrawRectAsync(box.MinX, box.MinY, box.MaxX - box.MinX, box.MaxY - box.MinY, "lime");
             }
         }
+
+        sw.Stop();
+        LastRenderMs = sw.ElapsedMilliseconds;
     }
 
     public async Task ToggleDebugAsync(bool isDebug)

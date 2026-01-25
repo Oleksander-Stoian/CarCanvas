@@ -15,7 +15,8 @@ public interface IIntersectionService
         CarModel otherCar, 
         IList<LineSegment> lines,
         AppOptions options,
-        UniformGridIndex? gridIndex = null);
+        UniformGridIndex? gridIndex = null,
+        System.Threading.CancellationToken ct = default);
 
     // Synchronous version for direct usage or wrapping in Task.Run by caller
     IntersectionResult FindIntersections(
@@ -23,5 +24,6 @@ public interface IIntersectionService
         CarModel otherCar,
         IList<LineSegment> lines,
         AppOptions options,
-        UniformGridIndex? gridIndex = null);
+        UniformGridIndex? gridIndex = null,
+        System.Threading.CancellationToken ct = default);
 }

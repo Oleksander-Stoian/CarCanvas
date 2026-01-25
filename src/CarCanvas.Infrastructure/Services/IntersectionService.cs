@@ -33,11 +33,12 @@ public class IntersectionService : IIntersectionService
         CarModel otherCar, 
         IList<LineSegment> lines,
         AppOptions options,
-        UniformGridIndex? gridIndex = null)
+        UniformGridIndex? gridIndex = null,
+        CancellationToken ct = default)
     {
         // Thin wrapper, no Task.Run here.
         // Concurrency is handled by the caller (ViewModel).
-        return await Task.FromResult(FindIntersections(targetCar, otherCar, lines, options, gridIndex));
+        return await Task.FromResult(FindIntersections(targetCar, otherCar, lines, options, gridIndex, ct));
     }
 
     public IntersectionResult FindIntersections(
@@ -45,7 +46,8 @@ public class IntersectionService : IIntersectionService
         CarModel otherCar, 
         IList<LineSegment> lines,
         AppOptions options,
-        UniformGridIndex? gridIndex)
+        UniformGridIndex? gridIndex,
+        CancellationToken ct = default)
     {
         var sw = Stopwatch.StartNew();
 
@@ -198,7 +200,8 @@ public class IntersectionService : IIntersectionService
                 options.MaxMarkersToDraw, 
                 result.MarkersToDraw,
                 options.FastMode ? options.MaxMarkersToDraw : -1,
-                result.TotalHitsCars + lineHits
+                result.TotalHitsCars + lineHits,
+                ct
             );
 
             lineHits += hitsFound;

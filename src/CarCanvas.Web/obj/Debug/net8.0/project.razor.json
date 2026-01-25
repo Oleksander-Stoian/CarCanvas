@@ -304,7 +304,7 @@
         }
       },
       {
-        "HashCode": 1116970899,
+        "HashCode": -870810856,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.CarControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -371,6 +371,24 @@
           },
           {
             "Kind": "Components.Component",
+            "Name": "RenderMs",
+            "TypeName": "System.Int64",
+            "Metadata": {
+              "Common.PropertyName": "RenderMs",
+              "Common.GloballyQualifiedTypeName": "global::System.Int64"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "IsRenderSimplified",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "IsRenderSimplified",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
             "Name": "OnTransformChange",
             "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
             "Metadata": {
@@ -408,7 +426,7 @@
         }
       },
       {
-        "HashCode": -1708465242,
+        "HashCode": 753442093,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.CarControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -475,6 +493,24 @@
           },
           {
             "Kind": "Components.Component",
+            "Name": "RenderMs",
+            "TypeName": "System.Int64",
+            "Metadata": {
+              "Common.PropertyName": "RenderMs",
+              "Common.GloballyQualifiedTypeName": "global::System.Int64"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "IsRenderSimplified",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "IsRenderSimplified",
+              "Common.GloballyQualifiedTypeName": "global::System.Boolean"
+            }
+          },
+          {
+            "Kind": "Components.Component",
             "Name": "OnTransformChange",
             "TypeName": "Microsoft.AspNetCore.Components.EventCallback<(System.Int32 x, System.Int32 y, System.Double rot)>",
             "Metadata": {
@@ -513,7 +549,7 @@
         }
       },
       {
-        "HashCode": 46912517,
+        "HashCode": -1734011067,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.LineControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -531,6 +567,15 @@
             "Metadata": {
               "Common.PropertyName": "TotalLines",
               "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "GridBuildMs",
+            "TypeName": "System.Int64",
+            "Metadata": {
+              "Common.PropertyName": "GridBuildMs",
+              "Common.GloballyQualifiedTypeName": "global::System.Int64"
             }
           },
           {
@@ -591,7 +636,7 @@
         }
       },
       {
-        "HashCode": 732490571,
+        "HashCode": 528017830,
         "Kind": "Components.Component",
         "Name": "CarCanvas.Web.Components.LineControlPanel",
         "AssemblyName": "CarCanvas.Web",
@@ -609,6 +654,15 @@
             "Metadata": {
               "Common.PropertyName": "TotalLines",
               "Common.GloballyQualifiedTypeName": "global::System.Int32"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "GridBuildMs",
+            "TypeName": "System.Int64",
+            "Metadata": {
+              "Common.PropertyName": "GridBuildMs",
+              "Common.GloballyQualifiedTypeName": "global::System.Int64"
             }
           },
           {

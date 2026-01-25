@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj": {}
+    "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj": {}
   },
   "projects": {
-    "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj": {
+    "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj",
+        "projectUniqueName": "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj",
         "projectName": "CarCanvas.Application",
-        "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj",
+        "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "d:\\Programing\\logistics\\src\\CarCanvas.Application\\obj\\",
+        "outputPath": "D:\\Programing\\logistics\\src\\CarCanvas.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj": {
-                "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj"
+              "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj": {
+                "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj"
               }
             }
           }
@@ -66,14 +66,14 @@
         }
       }
     },
-    "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj": {
+    "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj",
+        "projectUniqueName": "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj",
         "projectName": "CarCanvas.Domain",
-        "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj",
+        "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\obj\\",
+        "outputPath": "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -124,14 +124,14 @@
         }
       }
     },
-    "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj": {
+    "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj",
         "projectName": "CarCanvas.Infrastructure",
-        "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj",
+        "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\obj\\",
+        "outputPath": "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -146,8 +146,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj": {
-                "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj"
+              "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj": {
+                "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj"
               }
             }
           }
@@ -186,14 +186,14 @@
         }
       }
     },
-    "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj": {
+    "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
+        "projectUniqueName": "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
         "projectName": "CarCanvas.Tests",
-        "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
+        "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\CarCanvas.Tests.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "d:\\Programing\\logistics\\src\\CarCanvas.Tests\\obj\\",
+        "outputPath": "D:\\Programing\\logistics\\src\\CarCanvas.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -208,14 +208,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj": {
-                "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj"
+              "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj": {
+                "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Application\\CarCanvas.Application.csproj"
               },
-              "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj": {
-                "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj"
+              "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj": {
+                "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Domain\\CarCanvas.Domain.csproj"
               },
-              "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj": {
-                "projectPath": "d:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj"
+              "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj": {
+                "projectPath": "D:\\Programing\\logistics\\src\\CarCanvas.Infrastructure\\CarCanvas.Infrastructure.csproj"
               }
             }
           }
